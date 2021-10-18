@@ -15,7 +15,7 @@ class _BottomGNav extends State<BottomGNav> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0x434343),
+        color: Colors.grey[850],
         boxShadow: [
           BoxShadow(
             spreadRadius: -10,
@@ -27,7 +27,7 @@ class _BottomGNav extends State<BottomGNav> {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: 16.0, vertical: 12),
+            horizontal: 16.0, vertical: 8),
         child: GNav(
           gap: 10,
           color: Colors.grey[600],
