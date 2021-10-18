@@ -1,0 +1,6 @@
+{
+    "helloWorld": "헬로우",
+    "@language":{
+        "description": "한국어 표출될 예정"
+    }
+}
