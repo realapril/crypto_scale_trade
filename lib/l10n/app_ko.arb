@@ -1,6 +1,22 @@
 {
     "helloWorld": "헬로우",
-    "@language":{
+    "@helloWorld":{
         "description": "한국어 표출될 예정"
+    },
+    "saved": "목록",
+    "@saved":{
+        "description": "Bottom nav - 1st"
+    },
+    "scale": "물타기",
+    "@scale":{
+        "description": "Bottom nav - 2nd"
+    },
+    "percent": "퍼센트",
+    "@percent":{
+        "description": "Bottom nav - 3rd"
+    },
+    "settings": "설정",
+    "@settings":{
+        "description": "Bottom nav - 4th"
     }
 }

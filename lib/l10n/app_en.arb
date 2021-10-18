@@ -1,3 +1,7 @@
 {
-    "helloWorld": "Hello"
+    "helloWorld": "Hello",
+    "saved": "Saved",
+    "scale": "Scale",
+    "percent": "Percent",
+    "settings": "Settings"
 }

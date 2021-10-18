@@ -3,12 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:crypto_scale_trade/screens/bars/bottom_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PercentScreen extends StatefulWidget{
+class SettingsScreen extends StatefulWidget{
   @override
-  _PercentScreen createState()=> _PercentScreen();
+  _Settings createState()=> _Settings();
 }
 
-class _PercentScreen extends State<PercentScreen>{
+class _Settings extends State<SettingsScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +17,7 @@ class _PercentScreen extends State<PercentScreen>{
         AppLocalizations.of(context)!.helloWorld,
       ),
       bottomNavigationBar: BottomGNav(),
+
     );
   }
 
