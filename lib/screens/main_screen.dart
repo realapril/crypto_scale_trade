@@ -67,19 +67,19 @@ class _MainScreen extends State<MainScreen>{
           tabs: [
             GButton(
               icon: LineIcons.inbox,//searchPlus
-              text: '1', //AppLocalizations.of(this.context)!.saved,
+              text: AppLocalizations.of(this.context)!.saved,
             ),
             GButton(
               icon: LineIcons.calculator,
-              text: '2',//AppLocalizations.of(context)!.scale,
+              text: AppLocalizations.of(context)!.scale,
             ),
             GButton(
               icon: LineIcons.percent,
-              text: '3',//AppLocalizations.of(context)!.percent,
+              text: AppLocalizations.of(context)!.percent,
             ),
             GButton(
               icon: LineIcons.cog,
-              text: '4',//AppLocalizations.of(context)!.settings,
+              text: AppLocalizations.of(context)!.settings,
             )
           ],
           selectedIndex: bottomNavigationBar.getCurrentPage,
