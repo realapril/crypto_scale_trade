@@ -18,5 +18,21 @@
     "settings": "설정",
     "@settings":{
         "description": "Bottom nav - 4th"
+    },
+    "yes": "네",
+    "@yes":{
+        "description": "quit_pop_up"
+    },
+    "no": "아니요",
+    "@no":{
+        "description": "quit_pop_up"
+    },
+    "quitConfirmTitle":"종료",
+    "@quitConfirmTitle":{
+        "description": "quit_pop_up"
+    },
+    "quitConfirmContent":"어플을 끝낼까요?",
+    "@quitConfirmContent":{
+        "description": "quit_pop_up"
     }
 }

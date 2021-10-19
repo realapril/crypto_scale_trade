@@ -3,5 +3,9 @@
     "saved": "Saved",
     "scale": "Scale",
     "percent": "Percent",
-    "settings": "Settings"
+    "settings": "Settings",
+    "yes": "yes",
+    "no": "no",
+    "quitConfirmTitle":"Are you sure?",
+    "quitConfirmContent":"Do you want to exit?"
 }

@@ -4,13 +4,51 @@ import 'package:line_icons/line_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomGNav extends StatefulWidget {
-  const BottomGNav({Key? key}) : super(key: key);
-
+  final dynamic initialIdx;
+  const BottomGNav({Key? key, this.initialIdx}) : super(key: key);
   @override
   _BottomGNav createState() => _BottomGNav();
 }
 
 class _BottomGNav extends State<BottomGNav> {
+  int selectedIndex = 0;
+
+  int _setInitialIndex(){
+    selectedIndex = widget.initialIdx;
+    return selectedIndex;
+  }
+
+  void _tabChanged(int index) {
+    if( index != selectedIndex){
+      // setState(() {
+      //   selectedIndex = index;
+      //   _pageMovement(selectedIndex);
+      // });
+      _pageMovement(index);
+    }
+  }
+
+  void _pageMovement(int selectedIndex){
+
+    switch (selectedIndex) {
+      case 0:
+        Navigator.of(context).pushReplacementNamed('/savedList');
+        break;
+
+      case 1:
+        Navigator.of(context).pushReplacementNamed('/scale_planning');
+        break;
+
+      case 2:
+        Navigator.of(context).pushReplacementNamed('/percent');
+        break;
+
+      case 3:
+        Navigator.of(context).pushReplacementNamed('/setting');
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,8 +96,8 @@ class _BottomGNav extends State<BottomGNav> {
               text: AppLocalizations.of(context)!.settings,
             )
           ],
-          // selectedIndex: selectedIndex,
-          // onTabChange: _tabChanged,
+          selectedIndex: _setInitialIndex(),
+          onTabChange: _tabChanged,
         ),
       ),
     );

@@ -1,7 +1,7 @@
+import 'package:crypto_scale_trade/screens/UI/quit_pop_up.dart';
 import 'package:crypto_scale_trade/screens/bars/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SavedListScreen extends StatefulWidget{
   @override
@@ -9,18 +9,28 @@ class SavedListScreen extends StatefulWidget{
 }
 
 class _SavedListState extends State<SavedListScreen>{
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+        context: context,
+        builder: (context) =>const QuitPopUp()
+    )) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar( //기본으로 뒤로가기 붙어있음
-        elevation: 20,
-        title: const Text('Saved List'),
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 20,
+          title: const Text('Saved List'),
+          automaticallyImplyLeading: false,
+        ),
+        body: Center(
+          child: Text(AppLocalizations.of(context)!.helloWorld,),
+        ),
+        bottomNavigationBar: const BottomGNav(initialIdx: 0),
       ),
-      body: Center(
-
-      ),
-      bottomNavigationBar: BottomGNav()
     );
   }
 
