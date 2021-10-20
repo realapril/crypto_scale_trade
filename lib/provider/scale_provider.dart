@@ -1,4 +1,4 @@
-// import 'package:crypto_scale_trade/Model/trade_model.dart';
+// import 'package:crypto_scale_trade/model/trade_model.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 //
