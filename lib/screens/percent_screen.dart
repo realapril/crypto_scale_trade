@@ -1,9 +1,10 @@
+import 'package:crypto_scale_trade/component/result_row_percent_cal.dart';
+import 'package:crypto_scale_trade/component/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_scale_trade/provider/percent_provider.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class PercentScreen extends StatefulWidget{
@@ -16,19 +17,7 @@ class _PercentScreen extends State<PercentScreen>{
   @override
   Widget build(BuildContext context) {
     PercentProvider percentProvider= Provider.of<PercentProvider>(context);
-
-    TextStyle titleTextStyle = GoogleFonts.lato(
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-    );
-
-    TextStyle planTextStyle = GoogleFonts.lato(
-        fontSize: 18.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.black87,
-    );
-
+    TextStyles _txtStyle = TextStyles();
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.percent)),
       body: Scrollbar(
@@ -45,7 +34,7 @@ class _PercentScreen extends State<PercentScreen>{
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
                         child: Text('A가 B가 되면 몇퍼센트 증가/감소?',
-                          style: titleTextStyle,
+                          style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
                       content: Padding(
@@ -54,20 +43,25 @@ class _PercentScreen extends State<PercentScreen>{
                           children: [
                             Row(
                               children: [
-                                Text('A값',
-                                  style: planTextStyle,
+                                Expanded(
+                                  flex: 1,
+                                  child: Text('val A',
+                                    style: _txtStyle.percentCal_plainTextStyle(),
+                                  ),
                                 ),
-                                const SizedBox(
-                                  width: 85.0,
+                                const Expanded(
+                                  flex: 1,
+                                  child: SizedBox(),
                                 ),
                                 Expanded(
-                                  child: Container(
+                                  flex: 3,
+                                  child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
                                         onChanged: percentProvider.setVtvA,
                                         keyboardType: TextInputType.numberWithOptions(decimal: true),
                                         textAlign: TextAlign.right,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           isDense: true,
                                         ),
                                       )
@@ -82,19 +76,27 @@ class _PercentScreen extends State<PercentScreen>{
                               padding: const EdgeInsets.symmetric(vertical: 8.0),
                               child: Row(
                                 children: [
-                                  Text('B값',
-                                    style: planTextStyle,),
-                                  const SizedBox(
-                                    width: 70.0,
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('B값',
+                                      style: _txtStyle.percentCal_plainTextStyle(),
+                                    ),
+                                  ),
+                                  const Expanded(
+                                    flex: 1,
+                                    child: SizedBox(
+                                      width: 85.0,
+                                    ),
                                   ),
                                   Expanded(
-                                    child: Container(
+                                    flex: 3,
+                                    child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
                                           onChanged: percentProvider.setVtvB,
                                           keyboardType: TextInputType.numberWithOptions(decimal: true),
                                           textAlign: TextAlign.right,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             isDense: true,
                                           ),
                                         )
@@ -113,27 +115,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: Row(
-                                children: [
-                                  Text('결과',
-                                    style: planTextStyle,),
-                                  const SizedBox(
-                                    width: 84.0,
-                                  ),
-                                  Expanded(
-                                    child: Text(percentProvider.getVtvPercent,
-                                      style: planTextStyle,
-                                      textAlign: TextAlign.right,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text('%',
-                                    style: planTextStyle,),
-                                ],
-                              ),
+                              child: ResultRowPercentWidget(result: percentProvider.getVtvPercent, isPercent: true),
                             ),
                           ],
                         ),
@@ -147,7 +129,7 @@ class _PercentScreen extends State<PercentScreen>{
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
                         child: Text('전체의 A퍼센트는 얼마?',
-                          style: titleTextStyle,
+                          style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
                       content: Padding(
@@ -156,20 +138,26 @@ class _PercentScreen extends State<PercentScreen>{
                           children: [
                             Row(
                               children: [
-                                Text('전체',
-                                  style: planTextStyle,
+                                Expanded(
+                                  flex: 1,
+                                  child: Text('전체',
+                                    style: _txtStyle.percentCal_plainTextStyle(),
+                                  ),
                                 ),
-                                const SizedBox(
-                                  width: 85.0,
+                                const Expanded(
+                                  flex: 1,
+                                  child: SizedBox(
+                                  ),
                                 ),
                                 Expanded(
-                                  child: Container(
+                                  flex: 3,
+                                  child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
                                         onChanged: percentProvider.setTtvTotal,
-                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                         textAlign: TextAlign.right,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           isDense: true,
                                         ),
                                       )
@@ -184,21 +172,30 @@ class _PercentScreen extends State<PercentScreen>{
                               padding: const EdgeInsets.symmetric(vertical: 8.0),
                               child: Row(
                                 children: [
-                                  Text('퍼센트',
-                                    style: planTextStyle,),
-                                  const SizedBox(
-                                    width: 70.0,
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('퍼센트',
+                                      style: _txtStyle.percentCal_titleTextStyle() ,
+                                    ),
+                                  ),
+                                  const Expanded(
+                                    flex: 1,
+                                    child: SizedBox(
+                                      width: 70.0,
+                                    ),
                                   ),
                                   Expanded(
-                                    child: Container(
+                                    flex: 3,
+                                    child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
                                           onChanged: percentProvider.setTtvPercent,
-                                          keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                           textAlign: TextAlign.right,
-                                          decoration: InputDecoration(
-                                              isDense: true,
-                                            ),
+                                          decoration: const InputDecoration(
+                                            isDense: true,
+                                            hintText: 'A',
+                                          ),
                                         )
                                     ),
                                   ),
@@ -206,7 +203,8 @@ class _PercentScreen extends State<PercentScreen>{
                                     width: 10.0,
                                   ),
                                   Text('%',
-                                    style: planTextStyle,),
+                                    style: _txtStyle.percentCal_plainTextStyle(),
+                                  ),
                                 ],
                               ),
                             ),
@@ -216,25 +214,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: Row(
-                                children: [
-                                  Text('결과',
-                                    style: planTextStyle,),
-                                  const SizedBox(
-                                    width: 84.0,
-                                  ),
-                                  Expanded(
-                                    child: Text(percentProvider.getTtvAnswer,
-                                      style: planTextStyle,
-                                      textAlign: TextAlign.right,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 30.0,
-                                  ),
-                                ],
-                              ),
+                              child: ResultRowPercentWidget(result: percentProvider.getTtvAnswer, isPercent: true),
                             ),
                           ],
                         ),
@@ -242,23 +222,6 @@ class _PercentScreen extends State<PercentScreen>{
                     ),
                   ],
                 ),
-
-                // Row(
-                //   children: [
-                //     Text('증가 퍼센트'),
-                //     TextField(),
-                //     Text('%'),
-                //   ],
-                // ),
-                // Row(
-                //   children: [
-                //     Text('결과'),
-                //     TextField(),
-                //     Text('%'),
-                //   ],
-                // ),
-
-
               ]
           ),
         ),
