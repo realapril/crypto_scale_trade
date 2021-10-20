@@ -38,6 +38,108 @@ class _PercentScreen extends State<PercentScreen>{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    StickyHeader( //1. VTV
+                      header: Container(
+                        height: 50.0,
+                        color: Colors.blueGrey[700],
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        alignment: Alignment.centerLeft,
+                        child: Text('A가 B가 되면 몇퍼센트 증가/감소?',
+                          style: titleTextStyle,
+                        ),
+                      ),
+                      content: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text('A값',
+                                  style: planTextStyle,
+                                ),
+                                const SizedBox(
+                                  width: 85.0,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      width: 100.0,
+                                      child: TextFormField(
+                                        onChanged: percentProvider.setVtvA,
+                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                        textAlign: TextAlign.right,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                        ),
+                                      )
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 30.0,
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Row(
+                                children: [
+                                  Text('B값',
+                                    style: planTextStyle,),
+                                  const SizedBox(
+                                    width: 70.0,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                        width: 100.0,
+                                        child: TextFormField(
+                                          onChanged: percentProvider.setVtvB,
+                                          keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                          textAlign: TextAlign.right,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                          ),
+                                        )
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 30.0,
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                            const Divider(
+                              thickness: 1,
+                              color: Colors.grey,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4.0),
+                              child: Row(
+                                children: [
+                                  Text('결과',
+                                    style: planTextStyle,),
+                                  const SizedBox(
+                                    width: 84.0,
+                                  ),
+                                  Expanded(
+                                    child: Text(percentProvider.getVtvPercent,
+                                      style: planTextStyle,
+                                      textAlign: TextAlign.right,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  Text('%',
+                                    style: planTextStyle,),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
                     StickyHeader( //4. TTV
                       header: Container(
                         height: 50.0,

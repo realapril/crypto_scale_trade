@@ -17,6 +17,46 @@ class PercentProvider extends ChangeNotifier {
   /// 5. vtp_ (Value to percent)
 
   // 1. vtv_ (Value to value)
+  double _vtvA =0.0;
+  double _vtvB =0.0;
+  double _vtvPercent =0.0;
+
+  String get getVtvPercent => _vtvPercent.toString();
+
+  setVtvA(String valA){
+    if(valA.isNotEmpty){
+      _vtvA = double.parse(valA);
+      if(_vtvA!=0.0 && _vtvB!=0.0){
+        _calVtvPercent(_vtvA, _vtvB);
+      }
+    }else{
+      _ttvTotal = 0.0;
+      _resetVtvPercent();
+    }
+  }
+
+  setVtvB(String valB){
+    if(valB.isNotEmpty){
+      _vtvB = double.parse(valB);
+      if(_vtvA!=0.0 && _vtvB!=0.0){
+        _calVtvPercent(_vtvA, _vtvB);
+      }
+    }else{
+      _ttvTotal = 0.0;
+      _resetVtvPercent();
+    }
+  }
+  _resetVtvPercent(){
+    _vtvPercent = 0;
+    notifyListeners();
+  }
+
+  _calVtvPercent(double valA, double valB){
+    _vtvPercent = (valB- valA)/valA * 100;
+    notifyListeners();
+  }
+
+
   // 2. vi_ (Value increase)
   // 3. vd_ (Value decrease)
 
@@ -24,6 +64,8 @@ class PercentProvider extends ChangeNotifier {
   double _ttvAnswer = 0.0;
   double _ttvTotal = 0.0;
   double _ttvPercent = 0.0;
+
+  String get getTtvAnswer => _ttvAnswer.toString();
 
   setTtvTotal(String total){
     if(total.isNotEmpty){
@@ -52,16 +94,13 @@ class PercentProvider extends ChangeNotifier {
   _resetTtvAnswer(){
     _ttvAnswer = 0;
     notifyListeners();
-
   }
 
   _calTtvAnswer(double total, double percent){//전체의 a 퍼센트는?
     _ttvAnswer = percent/total*100;
-    print("계산"+ _ttvAnswer.toString());
     notifyListeners();
   }
 
-  String get getTtvAnswer => _ttvAnswer.toString();
 
   // 5. vtp_ (Value to percent)
 }
