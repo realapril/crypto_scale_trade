@@ -175,7 +175,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   Expanded(
                                     flex: 1,
                                     child: Text('퍼센트',
-                                      style: _txtStyle.percentCal_titleTextStyle() ,
+                                      style: _txtStyle.percentCal_plainTextStyle() ,
                                     ),
                                   ),
                                   const Expanded(
@@ -214,7 +214,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: ResultRowPercentWidget(result: percentProvider.getTtvAnswer, isPercent: true),
+                              child: ResultRowPercentWidget(result: percentProvider.getTtvAnswer, isPercent: false),
                             ),
                           ],
                         ),
