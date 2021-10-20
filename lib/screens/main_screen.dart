@@ -36,6 +36,25 @@ class _MainScreen extends State<MainScreen>{
     return Container();
   }
 
+  PreferredSizeWidget _appBar(){
+    switch (bottomNavigationBar.getCurrentPage) {
+      case 0:
+        return AppBar(title: Text(AppLocalizations.of(context)!.saved));
+        break;
+      case 1:
+        return AppBar(title: Text(AppLocalizations.of(context)!.scale));
+        break;
+      case 2:
+        return AppBar(title: Text(AppLocalizations.of(context)!.percent));
+        break;
+      case 3:
+        return AppBar(title: Text(AppLocalizations.of(context)!.settings));
+        break;
+      default :
+        return AppBar(title: const Text('None'));
+    }
+  }
+
   Widget _bottomNavigationBarWidget() {
     return Container(
       decoration: BoxDecoration(
@@ -67,7 +86,7 @@ class _MainScreen extends State<MainScreen>{
           tabs: [
             GButton(
               icon: LineIcons.inbox,//searchPlus
-              text: AppLocalizations.of(this.context)!.saved,
+              text: AppLocalizations.of(context)!.saved,
             ),
             GButton(
               icon: LineIcons.calculator,
@@ -99,7 +118,7 @@ class _MainScreen extends State<MainScreen>{
 
 
     return Scaffold(
-      appBar: AppBar(title: Text('Indexed Stack')),
+      appBar: _appBar(),
       body: _navigationBody(),
       bottomNavigationBar: _bottomNavigationBarWidget(),
     );
