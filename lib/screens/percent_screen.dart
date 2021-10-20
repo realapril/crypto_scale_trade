@@ -10,19 +10,12 @@ class _PercentScreen extends State<PercentScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(AppLocalizations.of(context)!.helloWorld,),
+    return Scaffold(
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.percent)),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.helloWorld,),
+      ),
     );
-    //   Scaffold(
-    //       appBar: AppBar(
-    //         elevation: 20,
-    //         title: const Text('percent'),
-    //         automaticallyImplyLeading: false,
-    //       ),
-    //     body: Center(
-    //       child: Text(AppLocalizations.of(context)!.helloWorld,),
-    //     )
-    // );
   }
 
 }

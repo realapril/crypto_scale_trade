@@ -9,23 +9,12 @@ class SavedListScreen extends StatefulWidget{
 class _SavedListState extends State<SavedListScreen>{
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(AppLocalizations.of(context)!.helloWorld,),
+    return Scaffold(
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.percent)),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.helloWorld,),
+        ),
     );
-    //   WillPopScope(
-    //   onWillPop: _onWillPop,
-    //   child: Scaffold(
-    //     appBar: AppBar(
-    //       elevation: 20,
-    //       title: const Text('Saved List'),
-    //       automaticallyImplyLeading: false,
-    //     ),
-    //     body: Center(
-    //       child: Text(AppLocalizations.of(context)!.helloWorld,),
-    //     ),
-    //     bottomNavigationBar: const BottomGNav(initialIdx: 0),
-    //   ),
-    // );
   }
 //
 }

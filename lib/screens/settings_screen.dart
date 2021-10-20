@@ -10,8 +10,11 @@ class _Settings extends State<SettingsScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(AppLocalizations.of(context)!.helloWorld,),
+    return Scaffold(
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.settings)),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.helloWorld,),
+      ),
     );
   }
 

@@ -32,26 +32,11 @@ class _MainScreen extends State<MainScreen>{
     return Container();
   }
 
-  PreferredSizeWidget _appBar() {
-    switch (bottomNavigationBar.getCurrentPage) {
-      case 0:
-        return AppBar(title: Text(AppLocalizations.of(context)!.saved));
-      case 1:
-        return AppBar(title: Text(AppLocalizations.of(context)!.scale));
-      case 2:
-        return AppBar(title: Text(AppLocalizations.of(context)!.percent));
-      case 3:
-        return AppBar(title: Text(AppLocalizations.of(context)!.settings));
-      default :
-        return AppBar(title: const Text('None'));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     bottomNavigationBar = Provider.of<BottomNavigationProvider>(context);
     return Scaffold(
-      appBar: _appBar(),
       body: _navigationBody(),
       bottomNavigationBar: const BottomNavigationWidget(),
     );

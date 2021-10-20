@@ -10,8 +10,11 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('screen2'),
+    return Scaffold(
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
+      body: Center(
+        child: Text(AppLocalizations.of(context)!.helloWorld,),
+      ),
     );
   }
 
