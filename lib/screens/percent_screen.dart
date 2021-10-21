@@ -22,7 +22,6 @@ class _PercentScreen extends State<PercentScreen>{
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.percent)),
       body: Scrollbar(
         child: SingleChildScrollView(
-          controller: _scrollController,
           child: Column(
               children: <Widget>[
                 Column(
