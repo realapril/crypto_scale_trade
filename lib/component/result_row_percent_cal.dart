@@ -1,5 +1,6 @@
 import 'package:crypto_scale_trade/component/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResultRowPercentWidget extends StatelessWidget {
   const ResultRowPercentWidget({Key? key, required this.result, required this.isPercent}) : super(key: key);
@@ -15,7 +16,7 @@ class ResultRowPercentWidget extends StatelessWidget {
         children: [
           Expanded(
             flex : 1,
-            child: Text('결과', //TODO international
+            child: Text(AppLocalizations.of(context)!.calPercent_result,
               style: _txtstyle.percentCal_plainTextStyle(),
             ),
           ),
@@ -46,7 +47,7 @@ class ResultRowPercentWidget extends StatelessWidget {
         children: [
           Expanded(
             flex : 1,
-            child: Text('결과', //TODO international
+            child: Text(AppLocalizations.of(context)!.calPercent_result,
               style: _txtstyle.percentCal_plainTextStyle(),
             ),
           ),
@@ -70,8 +71,5 @@ class ResultRowPercentWidget extends StatelessWidget {
         ],
       );
     }
-
-
-
   }
 }

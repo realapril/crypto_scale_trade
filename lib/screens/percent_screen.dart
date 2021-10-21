@@ -33,7 +33,7 @@ class _PercentScreen extends State<PercentScreen>{
                         color: Colors.blueGrey[700],
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
-                        child: Text('A가 B가 되면 몇퍼센트 증가/감소?',
+                        child: Text(AppLocalizations.of(context)!.calPercent_vtv_title,
                           style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
@@ -45,7 +45,7 @@ class _PercentScreen extends State<PercentScreen>{
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Text('val A',
+                                  child: Text(AppLocalizations.of(context)!.calPercent_value,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -63,6 +63,7 @@ class _PercentScreen extends State<PercentScreen>{
                                         textAlign: TextAlign.right,
                                         decoration: const InputDecoration(
                                           isDense: true,
+                                          hintText: 'A',
                                         ),
                                       )
                                   ),
@@ -78,7 +79,7 @@ class _PercentScreen extends State<PercentScreen>{
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text('B값',
+                                    child: Text(AppLocalizations.of(context)!.calPercent_value,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
                                   ),
@@ -98,6 +99,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
+                                            hintText: 'B',
                                           ),
                                         )
                                     ),
@@ -127,7 +129,7 @@ class _PercentScreen extends State<PercentScreen>{
                         color: Colors.blueGrey[700],
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
-                        child: Text('A퍼센트 만큼 증가한다면?',
+                        child: Text(AppLocalizations.of(context)!.calPercent_vi_title,
                           style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
@@ -139,7 +141,7 @@ class _PercentScreen extends State<PercentScreen>{
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Text('전체',
+                                  child: Text(AppLocalizations.of(context)!.calPercent_total,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -172,7 +174,7 @@ class _PercentScreen extends State<PercentScreen>{
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text('증가',
+                                    child: Text(AppLocalizations.of(context)!.calPercent_vi_val2,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
                                   ),
@@ -192,6 +194,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
+                                            hintText: 'A',
                                           ),
                                         )
                                     ),
@@ -212,7 +215,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: ResultRowPercentWidget(result: percentProvider.getViAnswer, isPercent: false),
+                              child: ResultRowPercentWidget(result: percentProvider.getViResult, isPercent: false),
                             ),
                           ],
                         ),
@@ -224,7 +227,7 @@ class _PercentScreen extends State<PercentScreen>{
                         color: Colors.blueGrey[700],
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
-                        child: Text('A퍼센트 만큼 감소한다면?',
+                        child: Text(AppLocalizations.of(context)!.calPercent_vd_title,
                           style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
@@ -236,7 +239,7 @@ class _PercentScreen extends State<PercentScreen>{
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Text('전체',
+                                  child: Text(AppLocalizations.of(context)!.calPercent_total,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -269,7 +272,7 @@ class _PercentScreen extends State<PercentScreen>{
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text('감소',
+                                    child: Text(AppLocalizations.of(context)!.calPercent_vd_val2,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
                                   ),
@@ -289,6 +292,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
+                                            hintText: 'A',
                                           ),
                                         )
                                     ),
@@ -309,7 +313,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: ResultRowPercentWidget(result: percentProvider.getVdAnswer, isPercent: false),
+                              child: ResultRowPercentWidget(result: percentProvider.getVdResult, isPercent: false),
                             ),
                           ],
                         ),
@@ -321,7 +325,7 @@ class _PercentScreen extends State<PercentScreen>{
                         color: Colors.blueGrey[700],
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
-                        child: Text('전체의 A퍼센트는 얼마?',
+                        child: Text(AppLocalizations.of(context)!.calPercent_ttv_title,
                           style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
@@ -333,7 +337,7 @@ class _PercentScreen extends State<PercentScreen>{
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Text('전체',
+                                  child: Text(AppLocalizations.of(context)!.calPercent_total ,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -367,7 +371,7 @@ class _PercentScreen extends State<PercentScreen>{
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text('퍼센트',
+                                    child: Text(AppLocalizations.of(context)!.calPercent_ttv_val2,
                                       style: _txtStyle.percentCal_plainTextStyle() ,
                                     ),
                                   ),
@@ -407,7 +411,7 @@ class _PercentScreen extends State<PercentScreen>{
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 4.0),
-                              child: ResultRowPercentWidget(result: percentProvider.getTtvAnswer, isPercent: false),
+                              child: ResultRowPercentWidget(result: percentProvider.getTtvResult, isPercent: false),
                             ),
                           ],
                         ),
@@ -419,7 +423,7 @@ class _PercentScreen extends State<PercentScreen>{
                         color: Colors.blueGrey[700],
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         alignment: Alignment.centerLeft,
-                        child: Text('전체중 A는 몇퍼센트?',
+                        child: Text(AppLocalizations.of(context)!.calPercent_vtp_title ,
                           style: _txtStyle.percentCal_titleTextStyle() ,
                         ),
                       ),
@@ -431,7 +435,7 @@ class _PercentScreen extends State<PercentScreen>{
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Text('전체',
+                                  child: Text(AppLocalizations.of(context)!.calPercent_total ,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -464,7 +468,7 @@ class _PercentScreen extends State<PercentScreen>{
                                 children: [
                                   Expanded(
                                     flex: 1,
-                                    child: Text('value',
+                                    child: Text(AppLocalizations.of(context)!.calPercent_value ,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
                                   ),
@@ -484,6 +488,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
+                                            hintText: 'A',
                                           ),
                                         )
                                     ),
@@ -507,7 +512,6 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ]

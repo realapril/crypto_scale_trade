@@ -34,5 +34,18 @@
     "quitConfirmContent":"어플을 끝낼까요?",
     "@quitConfirmContent":{
         "description": "quit_pop_up"
-    }
+    },
+    "calPercent_result": "결과",
+    "calPercent_hint_a": "A",
+    "calPercent_hint_b": "B",
+    "calPercent_total": "전체",
+    "calPercent_value": "값",
+    "calPercent_vtv_title": "A가 B가 되면 몇퍼센트 증가 / 감소?",
+    "calPercent_vi_title": "A 퍼센트 만큼 증가한다면?",
+    "calPercent_vi_val2": "증가",
+    "calPercent_vd_title": "A 퍼센트 만큼 감소한다면?",
+    "calPercent_vd_val2": "감소",
+    "calPercent_ttv_title": "전체의 A 퍼센트는 얼마?",
+    "calPercent_ttv_val2": "퍼센트",
+    "calPercent_vtp_title": "전체중 A는 몇퍼센트?"
 }

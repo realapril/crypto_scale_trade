@@ -60,99 +60,99 @@ class PercentProvider extends ChangeNotifier {
   // 2. vi_ (Value increase)
   double _viTotal =0.0;
   double _viPercent =0.0;
-  double _viAnswer =0.0;
+  double _viResult =0.0;
 
-  String get getViAnswer => _viAnswer.toString();
+  String get getViResult => _viResult.toString();
 
   setViTotal(String total){
     if(total.isNotEmpty){
       _viTotal = double.parse(total);
       if(_viTotal!=0.0 && _viPercent!=0.0){
-        _calViAnswer(_viTotal, _viPercent);
+        _calViResult(_viTotal, _viPercent);
       }
     }else{
       _viTotal = 0.0;
-      _resetViAnswer();
+      _resetViResult();
     }
   }
   setViPercent(String percent){
     if(percent.isNotEmpty){
       _viPercent = double.parse(percent);
       if(_viTotal!=0.0 && _viPercent!=0.0){
-        _calViAnswer(_viTotal, _viPercent);
+        _calViResult(_viTotal, _viPercent);
       }
     }else{
       _viPercent = 0.0;
-      _resetViAnswer();
+      _resetViResult();
     }
   }
 
-  _resetViAnswer(){
-    _viAnswer = 0;
+  _resetViResult(){
+    _viResult = 0;
     notifyListeners();
   }
 
-  _calViAnswer(double total, double percent){
-    _viAnswer = total * (1+ percent/100);
+  _calViResult(double total, double percent){
+    _viResult = total * (1+ percent/100);
     notifyListeners();
   }
 
   // 3. vd_ (Value decrease)
   double _vdTotal =0.0;
   double _vdPercent =0.0;
-  double _vdAnswer =0.0;
+  double _vdResult =0.0;
 
-  String get getVdAnswer => _vdAnswer.toString();
+  String get getVdResult => _vdResult.toString();
 
   setVdTotal(String total){
     if(total.isNotEmpty){
       _vdTotal = double.parse(total);
       if(_vdTotal!=0.0 && _vdPercent!=0.0){
-        _calVdAnswer(_vdTotal, _vdPercent);
+        _calVdResult(_vdTotal, _vdPercent);
       }
     }else{
       _vdTotal = 0.0;
-      _resetVdAnswer();
+      _resetVdResult();
     }
   }
   setVdPercent(String percent){
     if(percent.isNotEmpty){
       _vdPercent = double.parse(percent);
       if(_vdTotal!=0.0 && _vdPercent!=0.0){
-        _calVdAnswer(_vdTotal, _vdPercent);
+        _calVdResult(_vdTotal, _vdPercent);
       }
     }else{
       _vdPercent = 0.0;
-      _resetVdAnswer();
+      _resetVdResult();
     }
   }
 
-  _resetVdAnswer(){
-    _vdAnswer = 0;
+  _resetVdResult(){
+    _vdResult = 0;
     notifyListeners();
   }
 
-  _calVdAnswer(double total, double percent){
-    _vdAnswer = total * (1-percent/100);
+  _calVdResult(double total, double percent){
+    _vdResult = total * (1-percent/100);
     notifyListeners();
   }
 
   // 4. ttv_ (Total to value)
-  double _ttvAnswer = 0.0;
+  double _ttvResult = 0.0;
   double _ttvTotal = 0.0;
   double _ttvPercent = 0.0;
 
-  String get getTtvAnswer => _ttvAnswer.toString();
+  String get getTtvResult => _ttvResult.toString();
 
   setTtvTotal(String total){
     if(total.isNotEmpty){
       _ttvTotal = double.parse(total);
       if(_ttvTotal!=0.0 && _ttvPercent!=0.0){
-        _calTtvAnswer(_ttvTotal, _ttvPercent);
+        _calTtvResult(_ttvTotal, _ttvPercent);
       }
     }else{
       _ttvTotal = 0.0;
-      _resetTtvAnswer();
+      _resetTtvResult();
     }
   }
 
@@ -160,21 +160,21 @@ class PercentProvider extends ChangeNotifier {
     if(percent.isNotEmpty){
       _ttvPercent = double.parse(percent);
       if(_ttvTotal!=0.0 && _ttvPercent!=0.0){
-        _calTtvAnswer(_ttvTotal, _ttvPercent);
+        _calTtvResult(_ttvTotal, _ttvPercent);
       }
     }else{
       _ttvPercent = 0.0;
-      _resetTtvAnswer();
+      _resetTtvResult();
     }
   }
 
-  _resetTtvAnswer(){
-    _ttvAnswer = 0;
+  _resetTtvResult(){
+    _ttvResult = 0;
     notifyListeners();
   }
 
-  _calTtvAnswer(double total, double percent){
-    _ttvAnswer = percent/total*100;
+  _calTtvResult(double total, double percent){
+    _ttvResult = percent/total*100;
     notifyListeners();
   }
 
