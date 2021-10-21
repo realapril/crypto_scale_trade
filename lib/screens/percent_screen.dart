@@ -1,5 +1,6 @@
 import 'package:crypto_scale_trade/component/result_row_percent_cal.dart';
 import 'package:crypto_scale_trade/component/text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_scale_trade/provider/percent_provider.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +39,7 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                       content: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                         child: Column(
                           children: [
                             Row(
@@ -134,7 +135,7 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                       content: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                         child: Column(
                           children: [
                             Row(
@@ -233,7 +234,7 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                       content: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                         child: Column(
                           children: [
                             Row(
@@ -333,7 +334,7 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                       content: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                         child: Column(
                           children: [
                             Row(
@@ -431,7 +432,7 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                       content: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                         child: Column(
                           children: [
                             Row(
@@ -515,6 +516,20 @@ class _PercentScreen extends State<PercentScreen>{
                         ),
                       ),
                     ),
+                    Container( //TODO fix height to keyboard.height- bottomNav.height
+                      height: 150,
+                      color: Colors.blueGrey,
+                      // decoration: BoxDecoration(
+                      //     gradient: LinearGradient(
+                      //       begin: Alignment.topCenter,
+                      //       end: Alignment.bottomCenter,
+                      //       colors: [
+                      //         Colors.grey,
+                      //         Colors.grey[900]!
+                      //         //Color.fromARGB(255, 21,236,229)
+                      //       ],
+                      //     )),
+                    ),
                   ],
                 ),
               ]
@@ -523,5 +538,4 @@ class _PercentScreen extends State<PercentScreen>{
       ),
     );
   }
-
 }

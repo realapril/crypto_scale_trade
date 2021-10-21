@@ -148,7 +148,7 @@ class PercentProvider extends ChangeNotifier {
     if(total.isNotEmpty){
       _ttvTotal = double.parse(total);
       if(_ttvTotal!=0.0 && _ttvPercent!=0.0){
-        _calTtvResult(_ttvTotal, _ttvPercent);
+        _calTtvAnswer(_ttvTotal, _ttvPercent);
       }
     }else{
       _ttvTotal = 0.0;
@@ -160,7 +160,7 @@ class PercentProvider extends ChangeNotifier {
     if(percent.isNotEmpty){
       _ttvPercent = double.parse(percent);
       if(_ttvTotal!=0.0 && _ttvPercent!=0.0){
-        _calTtvResult(_ttvTotal, _ttvPercent);
+        _calTtvAnswer(_ttvTotal, _ttvPercent);
       }
     }else{
       _ttvPercent = 0.0;
@@ -173,7 +173,7 @@ class PercentProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  _calTtvResult(double total, double percent){
+  _calTtvAnswer(double total, double percent){
     _ttvResult = percent/total*100;
     notifyListeners();
   }
