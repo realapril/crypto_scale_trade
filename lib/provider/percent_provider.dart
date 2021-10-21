@@ -133,7 +133,7 @@ class PercentProvider extends ChangeNotifier {
   }
 
   _calVdAnswer(double total, double percent){
-    _vdAnswer = total * percent/100;
+    _vdAnswer = total * (1-percent/100);
     notifyListeners();
   }
 
@@ -186,7 +186,7 @@ class PercentProvider extends ChangeNotifier {
 
   String get getVtpPercent => _vtpPercent.toString();
 
-  setVtpA(String total){
+  setVtpTotal(String total){
     if(total.isNotEmpty){
       _vtpTotal = double.parse(total);
       if(_vtpTotal!=0.0 && _vtpValue!=0.0){
@@ -198,7 +198,7 @@ class PercentProvider extends ChangeNotifier {
     }
   }
 
-  setVtpB(String value){
+  setVtpValue(String value){
     if(value.isNotEmpty){
       _vtpValue = double.parse(value);
       if(_vtpTotal!=0.0 && _vtpValue!=0.0){
