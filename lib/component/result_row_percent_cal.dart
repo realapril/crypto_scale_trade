@@ -15,7 +15,7 @@ class ResultRowPercentWidget extends StatelessWidget {
       return Row(
         children: [
           Expanded(
-            flex : 1,
+            flex : 2,
             child: Text(AppLocalizations.of(context)!.calPercent_result,
               style: _txtstyle.percentCal_plainTextStyle(),
             ),
@@ -27,7 +27,7 @@ class ResultRowPercentWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: Text(result,
               style: _txtstyle.percentCal_plainTextStyle(),
               textAlign: TextAlign.right,
@@ -46,7 +46,7 @@ class ResultRowPercentWidget extends StatelessWidget {
       return Row(
         children: [
           Expanded(
-            flex : 1,
+            flex : 2,
             child: Text(AppLocalizations.of(context)!.calPercent_result,
               style: _txtstyle.percentCal_plainTextStyle(),
             ),
@@ -58,7 +58,7 @@ class ResultRowPercentWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: Text(result,
               style: _txtstyle.percentCal_plainTextStyle(),
               textAlign: TextAlign.right,

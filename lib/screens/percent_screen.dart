@@ -44,7 +44,7 @@ class _PercentScreen extends State<PercentScreen>{
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
+                                  flex: 2,
                                   child: Text(AppLocalizations.of(context)!.calPercent_value,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
@@ -54,7 +54,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   child: SizedBox(),
                                 ),
                                 Expanded(
-                                  flex: 3,
+                                  flex: 5,
                                   child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
@@ -63,7 +63,7 @@ class _PercentScreen extends State<PercentScreen>{
                                         textAlign: TextAlign.right,
                                         decoration: const InputDecoration(
                                           isDense: true,
-                                          hintText: 'A',
+                                          hintText: 'A  ',
                                         ),
                                       )
                                   ),
@@ -78,7 +78,7 @@ class _PercentScreen extends State<PercentScreen>{
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Text(AppLocalizations.of(context)!.calPercent_value,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
@@ -90,7 +90,7 @@ class _PercentScreen extends State<PercentScreen>{
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
@@ -99,7 +99,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
-                                            hintText: 'B',
+                                            hintText: 'B  ',
                                           ),
                                         )
                                     ),
@@ -140,8 +140,8 @@ class _PercentScreen extends State<PercentScreen>{
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
-                                  child: Text(AppLocalizations.of(context)!.calPercent_total,
+                                  flex: 2,
+                                  child: Text(AppLocalizations.of(context)!.calPercent_value,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -150,7 +150,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   child: SizedBox(),
                                 ),
                                 Expanded(
-                                  flex: 3,
+                                  flex: 5,
                                   child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
@@ -159,6 +159,7 @@ class _PercentScreen extends State<PercentScreen>{
                                         textAlign: TextAlign.right,
                                         decoration: const InputDecoration(
                                           isDense: true,
+                                          hintText: 'A',
                                         ),
                                       )
                                   ),
@@ -173,7 +174,7 @@ class _PercentScreen extends State<PercentScreen>{
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Text(AppLocalizations.of(context)!.calPercent_vi_val2,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
@@ -185,7 +186,7 @@ class _PercentScreen extends State<PercentScreen>{
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
@@ -194,7 +195,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
-                                            hintText: 'A',
+                                            hintText: 'B',
                                           ),
                                         )
                                     ),
@@ -238,8 +239,8 @@ class _PercentScreen extends State<PercentScreen>{
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
-                                  child: Text(AppLocalizations.of(context)!.calPercent_total,
+                                  flex: 2,
+                                  child: Text(AppLocalizations.of(context)!.calPercent_value,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
                                 ),
@@ -248,7 +249,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   child: SizedBox(),
                                 ),
                                 Expanded(
-                                  flex: 3,
+                                  flex: 5,
                                   child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
@@ -257,6 +258,8 @@ class _PercentScreen extends State<PercentScreen>{
                                         textAlign: TextAlign.right,
                                         decoration: const InputDecoration(
                                           isDense: true,
+                                          hintText: 'A',
+
                                         ),
                                       )
                                   ),
@@ -271,7 +274,7 @@ class _PercentScreen extends State<PercentScreen>{
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Text(AppLocalizations.of(context)!.calPercent_vd_val2,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
@@ -283,7 +286,7 @@ class _PercentScreen extends State<PercentScreen>{
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
@@ -292,7 +295,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
-                                            hintText: 'A',
+                                            hintText: 'B',
                                           ),
                                         )
                                     ),
@@ -336,7 +339,7 @@ class _PercentScreen extends State<PercentScreen>{
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
+                                  flex: 2,
                                   child: Text(AppLocalizations.of(context)!.calPercent_total ,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
@@ -347,7 +350,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   ),
                                 ),
                                 Expanded(
-                                  flex: 3,
+                                  flex: 5,
                                   child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
@@ -370,7 +373,7 @@ class _PercentScreen extends State<PercentScreen>{
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Text(AppLocalizations.of(context)!.calPercent_ttv_val2,
                                       style: _txtStyle.percentCal_plainTextStyle() ,
                                     ),
@@ -382,7 +385,7 @@ class _PercentScreen extends State<PercentScreen>{
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
@@ -391,7 +394,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
-                                            hintText: 'A',
+                                            hintText: 'A  ',
                                           ),
                                         )
                                     ),
@@ -434,7 +437,7 @@ class _PercentScreen extends State<PercentScreen>{
                             Row(
                               children: [
                                 Expanded(
-                                  flex: 1,
+                                  flex: 2,
                                   child: Text(AppLocalizations.of(context)!.calPercent_total ,
                                     style: _txtStyle.percentCal_plainTextStyle(),
                                   ),
@@ -444,7 +447,7 @@ class _PercentScreen extends State<PercentScreen>{
                                   child: SizedBox(),
                                 ),
                                 Expanded(
-                                  flex: 3,
+                                  flex: 5,
                                   child: SizedBox(
                                       width: 100.0,
                                       child: TextFormField(
@@ -467,7 +470,7 @@ class _PercentScreen extends State<PercentScreen>{
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Text(AppLocalizations.of(context)!.calPercent_value ,
                                       style: _txtStyle.percentCal_plainTextStyle(),
                                     ),
@@ -479,7 +482,7 @@ class _PercentScreen extends State<PercentScreen>{
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: SizedBox(
                                         width: 100.0,
                                         child: TextFormField(
@@ -488,7 +491,7 @@ class _PercentScreen extends State<PercentScreen>{
                                           textAlign: TextAlign.right,
                                           decoration: const InputDecoration(
                                             isDense: true,
-                                            hintText: 'A',
+                                            hintText: 'A  ',
                                           ),
                                         )
                                     ),

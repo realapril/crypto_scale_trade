@@ -9,16 +9,16 @@
     "quitConfirmTitle":"Are you sure?",
     "quitConfirmContent":"Do you want to exit?",
     "calPercent_result": "Result",
-    "calPercent_hint_a": "A",
-    "calPercent_hint_b": "B",
+    "calPercent_hint_a": "A  ",
+    "calPercent_hint_b": "B  ",
     "calPercent_total": "Total Value",
     "calPercent_value": "Value",
-    "calPercent_vtv_title": "If the value changed from A to B, by what percentage did it increase or Decrease?",
-    "calPercent_vi_title": "What if the value increased by A percent?",
+    "calPercent_vtv_title": "Percent change, from A to B",
+    "calPercent_vi_title": "Value A increased by B percent",
     "calPercent_vi_val2": "Increase",
-    "calPercent_vd_title": "What if the value decreased by A percent?",
+    "calPercent_vd_title": "Value A decreased by B percent",
     "calPercent_vd_val2": "Decrease",
     "calPercent_ttv_title": "What is A percent of the total value?",
     "calPercent_ttv_val2": "Percent",
-    "calPercent_vtp_title": "What percentage of the total is A?"
+    "calPercent_vtp_title": "What % of the total value is A?"
 }
