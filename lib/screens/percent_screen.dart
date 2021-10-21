@@ -518,7 +518,7 @@ class _PercentScreen extends State<PercentScreen>{
                     ),
                     Container( //TODO fix height to keyboard.height- bottomNav.height
                       height: 150,
-                      color: Colors.blueGrey,
+                      color: Color(0xFFCFD8DC),
                       // decoration: BoxDecoration(
                       //     gradient: LinearGradient(
                       //       begin: Alignment.topCenter,
