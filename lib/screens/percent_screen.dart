@@ -8,12 +8,9 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
-class PercentScreen extends StatefulWidget{
-  @override
-  _PercentScreen createState()=> _PercentScreen();
-}
+class PercentScreen extends StatelessWidget{
+  const PercentScreen({Key? key}) : super(key: key);
 
-class _PercentScreen extends State<PercentScreen>{
   @override
   Widget build(BuildContext context) {
     PercentProvider percentProvider= Provider.of<PercentProvider>(context);
