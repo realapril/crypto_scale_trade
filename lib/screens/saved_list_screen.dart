@@ -1,133 +1,94 @@
+import 'package:crypto_scale_trade/component/add_plan_list.dart';
+import 'package:crypto_scale_trade/component/person_tile.dart';
+import 'package:crypto_scale_trade/model/person.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SavedListScreen extends StatefulWidget{
   @override
-  _SavedListState createState()=> _SavedListState();
+  _SavedListScreen createState()=> _SavedListScreen();
 }
 
-class _SavedListState extends State<SavedListScreen>{
-  Widget _buildPageContent(BuildContext context) {
-    return Container(
-      color: Colors.blue.shade100,
-      child: ListView(
-        children: <Widget>[
-          SizedBox(height: 30.0,),
-          SizedBox(height: 20.0,),
-          _buildLoginForm(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              FloatingActionButton(
-                mini: true,
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                backgroundColor: Colors.blue,
-                child: Icon(Icons.arrow_back),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  Container _buildLoginForm() {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      child: Stack(
-        children: <Widget>[
-          ClipPath(
-            child: Container(
-              height: 400,
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                color: Colors.white,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: 90.0,),
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
-                        style: TextStyle(color: Colors.blue),
-                        decoration: InputDecoration(
-                            hintText: "Email address",
-                            hintStyle: TextStyle(color: Colors.blue.shade200),
-                            border: InputBorder.none,
-                            icon: Icon(Icons.email, color: Colors.blue,)
-                        ),
-                      )
-                  ),
-                  Container(child: Divider(color: Colors.blue.shade400,), padding: EdgeInsets.only(left: 20.0,right: 20.0, bottom: 10.0),),
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
-                        style: TextStyle(color: Colors.blue),
-                        decoration: InputDecoration(
-                            hintText: "Password",
-                            hintStyle: TextStyle(color: Colors.blue.shade200),
-                            border: InputBorder.none,
-                            icon: Icon(Icons.lock, color: Colors.blue,)
-                        ),
-                      )
-                  ),
-                  Container(child: Divider(color: Colors.blue.shade400,), padding: EdgeInsets.only(left: 20.0,right: 20.0, bottom: 10.0),),
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
-                        style: TextStyle(color: Colors.blue),
-                        decoration: InputDecoration(
-                            hintText: "Confirm password",
-                            hintStyle: TextStyle(color: Colors.blue.shade200),
-                            border: InputBorder.none,
-                            icon: Icon(Icons.lock, color: Colors.blue,)
-                        ),
-                      )
-                  ),
-                  Container(child: Divider(color: Colors.blue.shade400,), padding: EdgeInsets.only(left: 20.0,right: 20.0, bottom: 10.0),),
-                  SizedBox(height: 10.0,),
-
-                ],
-              ),
-            ),
+class _SavedListScreen extends State<SavedListScreen>{
+  Widget column = Expanded(
+    child: Column(
+      // align the text to the left instead of centered
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Card(
+          child: ListTile(
+            leading: Icon(Icons.computer),
+            title: Text("Title"),
+            subtitle: Text("SubTitle"),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircleAvatar(
-                radius: 40.0,
-                backgroundColor: Colors.blue.shade600,
-                child: Icon(Icons.person),
-              ),
-            ],
-          ),
-          Container(
-            height: 420,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: RaisedButton(
-                onPressed: (){},
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
-                child: Text("Sign Up", style: TextStyle(color: Colors.white70)),
-                color: Colors.blue,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
+        )
+      ],
+    ),
+  );
   @override
   Widget build(BuildContext context) {
+    List<Person> people = <Person>[Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false)];
     return Scaffold(
-      body: _buildPageContent(context),
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
+        body: Scrollbar(
+          child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 15.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: TextFormField(
+                      // onChanged: Provider.setVtvA,
+                      decoration: const InputDecoration(
+                          isDense: true,
+                          hintText: '계획 1'
+                      ),
+                    ),
+                  ),
+                  ListView.builder(
+                    // scrollDirection: Axis.vertical,
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: people.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PersonTile(people[index]);
+                    },
+                  ),
+                  // ListView.builder(
+                  // // ListView.separated(
+                  // //   itemCount: ,
+                  //   itemBuilder: (context, index) {
+                  //     // var item = items[index];
+                  //     return Card(
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Column(
+                  //           children: <Widget>[
+                  //             column,
+                  //             column,
+                  //             column,
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     );
+                  //
+                  //   },
+                  //   // separatorBuilder: (BuildContext context, int index){
+                  //   //   return Divider();
+                  //   // },
+                  // ),
+                  const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: AddPlanListWidget(),
+                  ),
+                ],
+              )
+          ),
+        )
     );
-
   }
-//
+
 }

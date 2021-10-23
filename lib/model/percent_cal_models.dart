@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class VTV{
   double valA =0.0;
   double valB =0.0;
