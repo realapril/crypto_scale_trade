@@ -2,9 +2,9 @@ import 'package:crypto_scale_trade/component/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-//TODO font, app_localizations
-class AddPlanListWidget extends StatelessWidget {
-  const AddPlanListWidget({Key? key}) : super(key: key);
+
+class AddPlanBtnWidget extends StatelessWidget {
+  const AddPlanBtnWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
