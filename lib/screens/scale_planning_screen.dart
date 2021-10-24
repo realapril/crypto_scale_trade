@@ -29,7 +29,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
         Column(
             children: [
               Expanded(child: _buildList(context)),
-              AddPlanBtnWidget(),
+              _addPlanBtnWidget(),
             ],
           )
         // ),
@@ -37,6 +37,44 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
     );
   }
 
+  Widget _addPlanBtnWidget(){
+    return Row(
+      children: [
+        Expanded(child:
+        OutlinedButton.icon(
+          style: OutlinedButton.styleFrom(
+              primary: Colors.white,
+              backgroundColor: Colors.blue
+          ),
+          onPressed: () {
+            // Respond to button press
+          },
+          icon: Icon(Icons.add_circle_outline_outlined, size: 18),
+          label: Text("매도"),
+        ),
+        ),
+        SizedBox(
+          width: 5.0,
+        ),
+        Expanded(child:
+        OutlinedButton.icon(
+          style: OutlinedButton.styleFrom(
+              primary: Colors.white,
+              backgroundColor: Colors.red
+          ),
+          onPressed: () {
+            setState((){
+              list.add(BuyingPlan('', '', '', FocusNode(), FocusNode(), TextEditingController(), TextEditingController() ));
+            });
+          },
+          icon: Icon(Icons.add_circle_outline_outlined, size: 18),
+          label: Text("매수"),
+        )
+        ),
+      ],
+    );
+
+  }
   Widget _buildList(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
