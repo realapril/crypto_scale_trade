@@ -1,6 +1,5 @@
 import 'package:crypto_scale_trade/model/buying_plan.dart';
 import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
-import 'package:crypto_scale_trade/provider/plan_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,7 @@ class _PlanListViewState extends State<PlanListView> {
     counter++;
     PlanListvewProvider planProvider = Provider.of<PlanListvewProvider>(context);
     return Padding(
-        padding: const EdgeInsets.fromLTRB(18, 18, 18, 20),
+        padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
         child: Dismissible(
           key: Key(counter.toString()),
           direction: DismissDirection.startToEnd,
@@ -52,9 +51,8 @@ class _PlanListViewState extends State<PlanListView> {
                   Expanded(
                     flex: 2,
                     child: TextField(
-                      //onChanged: planProvider.setBuyingPrice,
+                      onChanged:(text)=> planProvider.updatePlanPrice(widget.index, text),
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      focusNode: widget.planList[widget.index].myFocusNode1,
                       controller: widget.planList[widget.index].myController1,
                       textInputAction: TextInputAction.go,
                       textAlign: TextAlign.right,
@@ -80,9 +78,8 @@ class _PlanListViewState extends State<PlanListView> {
                   Expanded(
                     flex: 2,
                     child: TextField(
-                      // onChanged: planProvider.setAmount,
+                      onChanged: (text)=> planProvider.updatePlanAmount(widget.index, text),
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      focusNode: widget.planList[widget.index].myFocusNode2,
                       controller: widget.planList[widget.index].myController2,
                       textInputAction: TextInputAction.go,
                       textAlign: TextAlign.right,
@@ -108,28 +105,18 @@ class _PlanListViewState extends State<PlanListView> {
                   ),
                   Expanded(
                     flex: 2,
-                    child: Text('임시') ,
-                    // Text(planProvider.getTotalValue,
-                    //   textAlign: TextAlign.right,
-                    //   overflow: TextOverflow.ellipsis,
-                    // ),
-                    //AppLocalizations.of(context)!.calPercent_result
-                    //style: _txtstyle.percentCal_plainTextStyle(),
-
-                    //child: TextField(
-                    //   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    //   focusNode: widget.planList[widget.index].myFocusNode3,
-                    //   controller: widget.planList[widget.index].myController3,
-                    //   textInputAction: TextInputAction.go,
-                    //   textAlign: TextAlign.right,
-                    //   decoration: const InputDecoration(
-                    //     isDense: true,
-                    //   ),
-                    //),
+                    child:
+                    Text(widget.planList[widget.index].totalValue,
+                      textAlign: TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Text('원'),
                 ],
               ),
+              // Divider(
+              //   color: Colors.black54,
+              // )
             ],
           ),
         ),

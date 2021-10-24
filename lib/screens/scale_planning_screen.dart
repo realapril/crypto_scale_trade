@@ -70,7 +70,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.red
           ),
           onPressed: () {
-            planProvider.addPlan(BuyingPlan('', '', '', FocusNode(), FocusNode(), TextEditingController(), TextEditingController() ));
+            planProvider.addPlan(BuyingPlan('', '', '', TextEditingController(), TextEditingController() ));
           },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매수"),
@@ -98,8 +98,6 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   @override
   void dispose() {
     for (var element in planProvider.plans) {
-      element.myFocusNode1.dispose();
-      element.myFocusNode2.dispose();
 
       element.myController1.dispose();
       element.myController2.dispose();
