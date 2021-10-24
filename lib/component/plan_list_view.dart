@@ -1,4 +1,5 @@
 import 'package:crypto_scale_trade/model/buying_plan.dart';
+import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:crypto_scale_trade/provider/plan_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,106 +22,116 @@ class _PlanListViewState extends State<PlanListView> {
     widget.planList[widget.index].myController1.text = widget.planList[widget.index].buyingPrice;
     widget.planList[widget.index].myController2.text = widget.planList[widget.index].amount;
   }
+  int counter =0;
 
   @override
   Widget build(BuildContext context) {
-    ScalePlanProvider planProvider= Provider.of<ScalePlanProvider>(context);
-
+    counter++;
+    PlanListvewProvider planProvider = Provider.of<PlanListvewProvider>(context);
     return Padding(
         padding: const EdgeInsets.fromLTRB(18, 18, 18, 20),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: 1,
-                    child: Text('평단')
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: SizedBox(
+        child: Dismissible(
+          key: Key(counter.toString()),
+          direction: DismissDirection.startToEnd,
+          onDismissed: (direction){
+            planProvider.deletePlan(widget.index);
+          },
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: Text('평단')
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    onChanged: planProvider.setBuyingPrice,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    focusNode: widget.planList[widget.index].myFocusNode1,
-                    controller: widget.planList[widget.index].myController1,
-                    textInputAction: TextInputAction.go,
-                    textAlign: TextAlign.right,
-                    decoration: const InputDecoration(
-                      isDense: true,
+                  const Expanded(
+                    flex: 1,
+                    child: SizedBox(
                     ),
                   ),
-                ),
-                Text('원'),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    flex: 1,
-                    child: Text('수량')
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    onChanged: planProvider.setAmount,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    focusNode: widget.planList[widget.index].myFocusNode2,
-                    controller: widget.planList[widget.index].myController2,
-                    textInputAction: TextInputAction.go,
-                    textAlign: TextAlign.right,
-                    decoration: const InputDecoration(
-                      isDense: true,
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      //onChanged: planProvider.setBuyingPrice,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      focusNode: widget.planList[widget.index].myFocusNode1,
+                      controller: widget.planList[widget.index].myController1,
+                      textInputAction: TextInputAction.go,
+                      textAlign: TextAlign.right,
+                      decoration: const InputDecoration(
+                        isDense: true,
+                      ),
                     ),
                   ),
-                ),
-                Text('개')
-              ],
-            ),
-            SizedBox(height: 10,),
-            Row(
-              children: [
-                Expanded(
-                    flex: 1,
-                    child: Text('투자금액')
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: SizedBox(
+                  Text('원'),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: Text('수량')
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(planProvider.getTotalValue,
-                    textAlign: TextAlign.right,
-                    overflow: TextOverflow.ellipsis,
-                  ), //AppLocalizations.of(context)!.calPercent_result
-                  //style: _txtstyle.percentCal_plainTextStyle(),
+                  const Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      // onChanged: planProvider.setAmount,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      focusNode: widget.planList[widget.index].myFocusNode2,
+                      controller: widget.planList[widget.index].myController2,
+                      textInputAction: TextInputAction.go,
+                      textAlign: TextAlign.right,
+                      decoration: const InputDecoration(
+                        isDense: true,
+                      ),
+                    ),
+                  ),
+                  Text('개')
+                ],
+              ),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: Text('투자금액')
+                  ),
+                  const Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Text('임시') ,
+                    // Text(planProvider.getTotalValue,
+                    //   textAlign: TextAlign.right,
+                    //   overflow: TextOverflow.ellipsis,
+                    // ),
+                    //AppLocalizations.of(context)!.calPercent_result
+                    //style: _txtstyle.percentCal_plainTextStyle(),
 
-                  //child: TextField(
-                  //   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  //   focusNode: widget.planList[widget.index].myFocusNode3,
-                  //   controller: widget.planList[widget.index].myController3,
-                  //   textInputAction: TextInputAction.go,
-                  //   textAlign: TextAlign.right,
-                  //   decoration: const InputDecoration(
-                  //     isDense: true,
-                  //   ),
-                  //),
-                ),
-                Text('원'),
-              ],
-            ),
-          ],
+                    //child: TextField(
+                    //   keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    //   focusNode: widget.planList[widget.index].myFocusNode3,
+                    //   controller: widget.planList[widget.index].myController3,
+                    //   textInputAction: TextInputAction.go,
+                    //   textAlign: TextAlign.right,
+                    //   decoration: const InputDecoration(
+                    //     isDense: true,
+                    //   ),
+                    //),
+                  ),
+                  Text('원'),
+                ],
+              ),
+            ],
+          ),
         ),
       );
   }

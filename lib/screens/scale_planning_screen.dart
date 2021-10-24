@@ -1,25 +1,25 @@
 import 'package:crypto_scale_trade/component/add_plan_btn.dart';
-import 'package:crypto_scale_trade/component/person_tile.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
 import 'package:crypto_scale_trade/model/buying_plan.dart';
-import 'package:crypto_scale_trade/model/person.dart';
+import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
 
 class ScalePlanningScreen extends StatefulWidget{
   @override
   _ScalePlanning createState()=> _ScalePlanning();
 }
 
-List<BuyingPlan> list = [
-  BuyingPlan('', '', '', FocusNode(), FocusNode(), TextEditingController(), TextEditingController()),
-];
-
 class _ScalePlanning extends State<ScalePlanningScreen>{
-
+  GlobalKey<FormState> _formKey = GlobalKey();
+  late PlanListvewProvider planProvider;
 
   @override
   Widget build(BuildContext context) {
+    planProvider = Provider.of<PlanListvewProvider>(context);
+
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
       body:
@@ -28,6 +28,13 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
       //     child:
         Column(
             children: [
+              TextField(
+                // onChanged: ,
+                decoration: const InputDecoration(
+                  isDense: true,
+                  hintText: '코인이름1',
+                ),
+              ),
               Expanded(child: _buildList(context)),
               _addPlanBtnWidget(),
             ],
@@ -63,9 +70,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.red
           ),
           onPressed: () {
-            setState((){
-              list.add(BuyingPlan('', '', '', FocusNode(), FocusNode(), TextEditingController(), TextEditingController() ));
-            });
+            planProvider.addPlan(BuyingPlan('', '', '', FocusNode(), FocusNode(), TextEditingController(), TextEditingController() ));
           },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매수"),
@@ -78,10 +83,10 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   Widget _buildList(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      itemCount: list.length,
+      itemCount: planProvider.plans.length,
       padding: const EdgeInsets.only(top: 1.0),
       itemBuilder: (context, index) {
-        return PlanListView(index: index, planList: list);
+        return PlanListView(index: index, planList: planProvider.plans);
       },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider();
@@ -92,14 +97,13 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   //TODO 벗어나면 저장안된다고 경고문뜰거라 ㄱㅊ
   @override
   void dispose() {
-    for (var element in list) {
+    for (var element in planProvider.plans) {
       element.myFocusNode1.dispose();
       element.myFocusNode2.dispose();
 
       element.myController1.dispose();
       element.myController2.dispose();
     }
-
     super.dispose();
   }
 
