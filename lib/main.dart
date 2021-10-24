@@ -1,5 +1,6 @@
 import 'package:crypto_scale_trade/provider/bottom_navigation_provider.dart';
 import 'package:crypto_scale_trade/provider/percent_provider.dart';
+import 'package:crypto_scale_trade/provider/plan_provider.dart';
 import 'package:crypto_scale_trade/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ void main() {
     providers: [
       ChangeNotifierProvider<BottomNavigationProvider>(create: (_) => BottomNavigationProvider()),
       ChangeNotifierProvider<PercentProvider>(create: (_) => PercentProvider()),
+      ChangeNotifierProvider<ScalePlanProvider>(create: (_) => ScalePlanProvider()),
     ],
     child: MaterialApp(
         home: MainScreen(),
