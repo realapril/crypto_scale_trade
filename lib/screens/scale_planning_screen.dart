@@ -13,8 +13,8 @@ class ScalePlanningScreen extends StatefulWidget{
 }
 
 class _ScalePlanning extends State<ScalePlanningScreen>{
-  GlobalKey<FormState> _formKey = GlobalKey();
   late PlanListvewProvider planProvider;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +22,22 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
 
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
-      body:
-      // Scrollbar(
-      //   child: SingleChildScrollView(
-      //     child:
-        Column(
-            children: [
-              TextField(
-                // onChanged: ,
-                decoration: const InputDecoration(
-                  isDense: true,
-                  hintText: '코인이름1',
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        behavior: HitTestBehavior.opaque,
+          child: Column(
+              children: [
+                TextField(
+                  decoration: const InputDecoration(
+                    isDense: true,
+                    hintText: '코인이름1',
+                  ),
                 ),
-              ),
-              Expanded(child: _buildList(context)),
-              _addPlanBtnWidget(),
-            ],
-          )
+                Expanded(child: _buildList(context)),
+                _addPlanBtnWidget(),
+              ],
+            ),
+        )
         // ),
       // )
     );
@@ -71,7 +70,9 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
           ),
           onPressed: () {
             planProvider.addPlan(BuyingPlan('', '', '', TextEditingController(), TextEditingController() ));
-          },
+            _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
+            // _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+            },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매수"),
         )
@@ -80,8 +81,11 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
     );
 
   }
+
   Widget _buildList(BuildContext context) {
     return ListView.separated(
+      controller: _scrollController,
+      physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       itemCount: planProvider.plans.length,
       padding: const EdgeInsets.only(top: 1.0),

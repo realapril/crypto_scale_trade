@@ -3,7 +3,7 @@ import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 class PlanListView extends StatefulWidget {
   int index=0;
   List<BuyingPlan> planList;
@@ -15,6 +15,7 @@ class PlanListView extends StatefulWidget {
 }
 
 class _PlanListViewState extends State<PlanListView> {
+  int count = 0;
   @override
   void initState() {
     super.initState();
@@ -22,11 +23,18 @@ class _PlanListViewState extends State<PlanListView> {
     widget.planList[widget.index].myController2.text = widget.planList[widget.index].amount;
   }
   int counter =0;
-
   @override
   Widget build(BuildContext context) {
-    counter++;
     PlanListvewProvider planProvider = Provider.of<PlanListvewProvider>(context);
+    counter++;
+    // bool isKeyboardVisible = KeyboardVisibilityProvider.isKeyboardVisible(context);
+    var keyboardVisibilityController = KeyboardVisibilityController();
+    keyboardVisibilityController.onChange.listen((bool visible) {
+      if(!visible){
+        planProvider.updatePlanPrice(widget.index, widget.planList[widget.index].myController1.text);
+        planProvider.updatePlanAmount(widget.index, widget.planList[widget.index].myController2.text);
+      }
+    });
     return Padding(
         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
         child: Dismissible(
@@ -51,7 +59,6 @@ class _PlanListViewState extends State<PlanListView> {
                   Expanded(
                     flex: 2,
                     child: TextField(
-                      onChanged:(text)=> planProvider.updatePlanPrice(widget.index, text),
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       controller: widget.planList[widget.index].myController1,
                       textInputAction: TextInputAction.go,
@@ -78,7 +85,6 @@ class _PlanListViewState extends State<PlanListView> {
                   Expanded(
                     flex: 2,
                     child: TextField(
-                      onChanged: (text)=> planProvider.updatePlanAmount(widget.index, text),
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       controller: widget.planList[widget.index].myController2,
                       textInputAction: TextInputAction.go,
@@ -122,4 +128,7 @@ class _PlanListViewState extends State<PlanListView> {
         ),
       );
   }
+
+
+
 }
