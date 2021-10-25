@@ -1,20 +1,21 @@
-import 'package:crypto_scale_trade/model/buying_plan.dart';
+import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:line_icons/line_icons.dart';
 
 
 class PlanListView extends StatefulWidget {
   int index=0;
-  List<BuyingPlan> planList;
+  List<ScalePlan> planList;
 
   PlanListView({Key? key, required this.index, required this.planList}) : super(key: key);
 
   @override
   _PlanListViewState createState() => _PlanListViewState();
+
+
 }
 
 class _PlanListViewState extends State<PlanListView> {
@@ -38,7 +39,6 @@ class _PlanListViewState extends State<PlanListView> {
         planProvider.updatePlanAmount(widget.index, widget.planList[widget.index].myController2.text);
       }
     });
-    final Widget secondaryBackground;
     return Dismissible(
       key: Key(counter.toString()),
       direction: DismissDirection.startToEnd,
@@ -59,6 +59,7 @@ class _PlanListViewState extends State<PlanListView> {
         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
         child: Column(
           children: [
+            widget.planList[widget.index].isTradeTypeBuying == true ? Text('매수') : Text('매도'),
             Row(
               children: [
                 const Expanded(
@@ -142,7 +143,5 @@ class _PlanListViewState extends State<PlanListView> {
       ),
     );
   }
-
-
 
 }

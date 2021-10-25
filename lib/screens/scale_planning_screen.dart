@@ -1,6 +1,6 @@
 import 'package:crypto_scale_trade/component/add_plan_btn.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
-import 'package:crypto_scale_trade/model/buying_plan.dart';
+import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -53,7 +53,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.blue
           ),
           onPressed: () {
-            // Respond to button press
+            planProvider.addPlan(ScalePlan('', '', '', false, TextEditingController(), TextEditingController() ));
           },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매도"),
@@ -69,9 +69,8 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.red
           ),
           onPressed: () {
-            planProvider.addPlan(BuyingPlan('', '', '', TextEditingController(), TextEditingController() ));
+            planProvider.addPlan(ScalePlan('', '', '', true, TextEditingController(), TextEditingController() ));
             _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
-            // _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
             },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매수"),

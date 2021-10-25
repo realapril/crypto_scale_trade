@@ -1,7 +1,7 @@
 import 'package:crypto_scale_trade/component/add_plan_btn.dart';
 import 'package:crypto_scale_trade/component/person_tile.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
-import 'package:crypto_scale_trade/model/buying_plan.dart';
+import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/model/person.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

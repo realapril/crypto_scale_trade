@@ -1,14 +1,15 @@
-import 'package:crypto_scale_trade/model/buying_plan.dart';
+import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:flutter/material.dart';
 
 class PlanListvewProvider extends ChangeNotifier {
-  List<BuyingPlan> _plans = [
-    BuyingPlan('', '', '', TextEditingController(), TextEditingController()),
+  //basic plan should be buying plan
+  List<ScalePlan> _plans = [
+    ScalePlan('', '', '', true, TextEditingController(), TextEditingController()),
   ];
 
-  List<BuyingPlan> get plans => _plans;
+  List<ScalePlan> get plans => _plans;
 
-  addPlan(BuyingPlan newPlan) {
+  addPlan(ScalePlan newPlan) {
     _plans.add(newPlan);
     notifyListeners();
   }
