@@ -21,7 +21,24 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
     planProvider = Provider.of<PlanListvewProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
+      appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.scale),
+          actions: <Widget>[
+            IconButton(
+            iconSize: 30.0,
+            icon: const Icon(Icons.save_alt_rounded),
+            tooltip: 'Save data',
+            onPressed: () {
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   const SnackBar(content: Text('This is a snackbar')));
+              },
+            ),
+            SizedBox(
+              width: 10,
+            ),
+
+          ]
+      ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         behavior: HitTestBehavior.opaque,
