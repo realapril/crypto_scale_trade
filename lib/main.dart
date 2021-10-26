@@ -24,7 +24,17 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
           AppLocalizations.delegate,
         ],
-        supportedLocales: L10n.all,),
+        supportedLocales: L10n.all,
+        theme: ThemeData(
+          primarySwatch: Colors.blueGrey,
+          // fontFamily: 'Georgia',
+          // textTheme: TextTheme(
+          //   headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          //   headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          //   bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          // ),
+        ),
+    ),
   ));
 }
 

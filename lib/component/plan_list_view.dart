@@ -57,7 +57,7 @@ class _PlanListViewState extends State<PlanListView> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
+        padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -65,7 +65,7 @@ class _PlanListViewState extends State<PlanListView> {
               padding: const EdgeInsets.all(8.0),
               child: Text('매수', style: _txtStyle.scaleTradePlan_buyTextStyle(),),
             ) : Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Text('매도', style: _txtStyle.scaleTradePlan_sellTextStyle()),
             ),
             Row(

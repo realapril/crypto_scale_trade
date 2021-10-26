@@ -44,12 +44,15 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
         behavior: HitTestBehavior.opaque,
           child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      hintText: '코인이름',
+                Container(
+                  color: Colors.grey[300],
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        isDense: true,
+                        hintText: '코인이름',
+                      ),
                     ),
                   ),
                 ),
@@ -66,6 +69,9 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   Widget _addPlanBtnWidget(){
     return Row(
       children: [
+        SizedBox(
+          width: 5.0,
+        ),
         Expanded(child:
         OutlinedButton.icon(
           style: OutlinedButton.styleFrom(
@@ -95,6 +101,9 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매수"),
         )
+        ),
+        SizedBox(
+          width: 5.0,
         ),
       ],
     );
