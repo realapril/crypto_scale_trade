@@ -44,10 +44,13 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
         behavior: HitTestBehavior.opaque,
           child: Column(
               children: [
-                TextField(
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    hintText: '코인이름1',
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      hintText: '코인이름',
+                    ),
                   ),
                 ),
                 Expanded(child: _buildList(context)),

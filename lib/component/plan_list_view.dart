@@ -1,3 +1,4 @@
+import 'package:crypto_scale_trade/component/text_styles.dart';
 import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,7 @@ class _PlanListViewState extends State<PlanListView> {
   Widget build(BuildContext context) {
     PlanListvewProvider planProvider = Provider.of<PlanListvewProvider>(context);
     counter++;
-    // bool isKeyboardVisible = KeyboardVisibilityProvider.isKeyboardVisible(context);
+    TextStyles _txtStyle = TextStyles();
     var keyboardVisibilityController = KeyboardVisibilityController();
     keyboardVisibilityController.onChange.listen((bool visible) {
       if(!visible){
@@ -58,8 +59,15 @@ class _PlanListViewState extends State<PlanListView> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            widget.planList[widget.index].isTradeTypeBuying == true ? Text('매수') : Text('매도'),
+            widget.planList[widget.index].isTradeTypeBuying == true ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('매수', style: _txtStyle.scaleTradePlan_buyTextStyle(),),
+            ) : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('매도', style: _txtStyle.scaleTradePlan_sellTextStyle()),
+            ),
             Row(
               children: [
                 const Expanded(

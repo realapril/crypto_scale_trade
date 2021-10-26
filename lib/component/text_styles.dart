@@ -18,4 +18,19 @@ class TextStyles{
       color: Colors.white,
     );
   }
+
+  TextStyle scaleTradePlan_buyTextStyle(){
+    return GoogleFonts.archivo(
+      fontSize: 18.0,
+      color: Colors.red,
+    );
+  }
+
+  TextStyle scaleTradePlan_sellTextStyle(){
+    return GoogleFonts.archivo(
+      fontSize: 18.0,
+      color: Colors.blue,
+    );
+  }
+
 }
