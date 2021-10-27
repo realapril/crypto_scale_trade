@@ -23,10 +23,14 @@ class PercentProvider extends ChangeNotifier {
   String get getVtvPercent => vtv.resPercent.toString();
 
   setVtvA(String valA){
-    if(valA.isNotEmpty){
+
+    if(_isNumeric(valA)){
       vtv.valA = double.parse(valA);
       if(vtv.valA!=0.0 && vtv.valB!=0.0){
         _calVtvPercent(vtv.valA, vtv.valB);
+      }else{
+        vtv.resPercent = 0.0;
+        _resetVtvPercent();
       }
     }else{
       vtv.resPercent = 0.0;
@@ -35,10 +39,13 @@ class PercentProvider extends ChangeNotifier {
   }
 
   setVtvB(String valB){
-    if(valB.isNotEmpty){
+    if(_isNumeric(valB)){
       vtv.valB = double.parse(valB);
       if(vtv.valA!=0.0 && vtv.valB!=0.0){
         _calVtvPercent(vtv.valA, vtv.valB);
+      }else{
+        vtv.resPercent = 0.0;
+        _resetVtvPercent();
       }
     }else{
       vtv.resPercent = 0.0;
@@ -62,24 +69,30 @@ class PercentProvider extends ChangeNotifier {
   String get getViResult => vi.result.toString();
 
   setViTotal(String total){
-    if(total.isNotEmpty){
+    if(_isNumeric(total)){
       vi.total = double.parse(total);
       if(vi.total!=0.0 && vi.percent!=0.0){
         _calViResult(vi.total, vi.percent);
+      }else{
+        vi.result = 0.0;
+        _resetViResult();
       }
     }else{
-      vi.total = 0.0;
+      vi.result = 0.0;
       _resetViResult();
     }
   }
   setViPercent(String percent){
-    if(percent.isNotEmpty){
+    if(_isNumeric(percent)){
       vi.percent = double.parse(percent);
       if(vi.total!=0.0 && vi.percent!=0.0){
         _calViResult(vi.total, vi.percent);
+      }else{
+        vi.result = 0.0;
+        _resetViResult();
       }
     }else{
-      vi.percent = 0.0;
+      vi.result = 0.0;
       _resetViResult();
     }
   }
@@ -100,24 +113,30 @@ class PercentProvider extends ChangeNotifier {
   String get getVdResult => vd.result.toString();
 
   setVdTotal(String total){
-    if(total.isNotEmpty){
+    if(_isNumeric(total)){
       vd.total = double.parse(total);
       if(vd.total!=0.0 && vd.percent!=0.0){
         _calVdResult(vd.total, vd.percent);
+      }else{
+        vd.result = 0.0;
+        _resetVdResult();
       }
     }else{
-      vd.total = 0.0;
+      vd.result = 0.0;
       _resetVdResult();
     }
   }
   setVdPercent(String percent){
-    if(percent.isNotEmpty){
+    if(_isNumeric(percent)){
       vd.percent = double.parse(percent);
       if(vd.total!=0.0 && vd.percent!=0.0){
         _calVdResult(vd.total, vd.percent);
+      }else{
+        vd.result = 0.0;
+        _resetVdResult();
       }
     }else{
-      vd.percent = 0.0;
+      vd.result = 0.0;
       _resetVdResult();
     }
   }
@@ -138,25 +157,31 @@ class PercentProvider extends ChangeNotifier {
   String get getTtvResult => ttv.result.toString();
 
   setTtvTotal(String total){
-    if(total.isNotEmpty){
+    if(_isNumeric(total)){
       ttv.total = double.parse(total);
       if(ttv.total!=0.0 && ttv.percent!=0.0){
         _calTtvAnswer(ttv.total, ttv.percent);
+      }else{
+        ttv.result = 0.0;
+        _resetTtvResult();
       }
     }else{
-      ttv.total = 0.0;
+      ttv.result = 0.0;
       _resetTtvResult();
     }
   }
 
   setTtvPercent(String percent){
-    if(percent.isNotEmpty){
+    if(_isNumeric(percent)){
       ttv.percent = double.parse(percent);
       if(ttv.total!=0.0 && ttv.percent!=0.0){
         _calTtvAnswer(ttv.total, ttv.percent);
+      }else{
+        ttv.result = 0.0;
+        _resetTtvResult();
       }
     }else{
-      ttv.percent = 0.0;
+      ttv.result = 0.0;
       _resetTtvResult();
     }
   }
@@ -178,25 +203,31 @@ class PercentProvider extends ChangeNotifier {
   String get getVtpPercent => vtp.resPercent.toString();
 
   setVtpTotal(String total){
-    if(total.isNotEmpty){
+    if(_isNumeric(total)){
       vtp.total = double.parse(total);
       if(vtp.total!=0.0 && vtp.value!=0.0){
         _calVtpPercent(vtp.total, vtp.value);
+      }else{
+        vtp.resPercent = 0.0;
+        _resetVtpPercent();
       }
     }else{
-      vtp.total = 0.0;
+      vtp.resPercent = 0.0;
       _resetVtpPercent();
     }
   }
 
   setVtpValue(String value){
-    if(value.isNotEmpty){
+    if(_isNumeric(value)){
       vtp.value = double.parse(value);
       if(vtp.total!=0.0 && vtp.value!=0.0){
         _calVtpPercent(vtp.total, vtp.value);
+      }else{
+        vtp.resPercent = 0.0;
+        _resetVtpPercent();
       }
     }else{
-      vtp.total = 0.0;
+      vtp.resPercent = 0.0;
       _resetVtpPercent();
     }
   }
@@ -208,6 +239,17 @@ class PercentProvider extends ChangeNotifier {
   _calVtpPercent(double total, double value){
     vtp.resPercent = value/total*100;
     notifyListeners();
+  }
+
+
+  bool _isNumeric(String? s) {
+    if (s == null) {
+      return false;
+    }
+    if (s.trim().isEmpty){
+      return false;
+    }
+    return double.tryParse(s) != null;
   }
 
 

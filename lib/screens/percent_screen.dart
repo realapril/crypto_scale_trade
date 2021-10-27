@@ -57,8 +57,9 @@ class PercentScreen extends StatelessWidget{
                                       width: 100.0,
                                       child: TextFormField(
                                         onChanged: percentProvider.setVtvA,
-                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                         textAlign: TextAlign.right,
+                                        textInputAction: TextInputAction.go,
                                         decoration: const InputDecoration(
                                           isDense: true,
                                           hintText: 'A  ',
@@ -93,8 +94,10 @@ class PercentScreen extends StatelessWidget{
                                         width: 100.0,
                                         child: TextFormField(
                                           onChanged: percentProvider.setVtvB,
+
                                           keyboardType: TextInputType.numberWithOptions(decimal: true),
                                           textAlign: TextAlign.right,
+                                          textInputAction: TextInputAction.go,
                                           decoration: const InputDecoration(
                                             isDense: true,
                                             hintText: 'B  ',
@@ -512,20 +515,6 @@ class PercentScreen extends StatelessWidget{
                           ],
                         ),
                       ),
-                    ),
-                    Container( //TODO fix height to keyboard.height- bottomNav.height
-                      height: 150,
-                      color: Color(0xFFCFD8DC),
-                      // decoration: BoxDecoration(
-                      //     gradient: LinearGradient(
-                      //       begin: Alignment.topCenter,
-                      //       end: Alignment.bottomCenter,
-                      //       colors: [
-                      //         Colors.grey,
-                      //         Colors.grey[900]!
-                      //         //Color.fromARGB(255, 21,236,229)
-                      //       ],
-                      //     )),
                     ),
                   ],
                 ),
