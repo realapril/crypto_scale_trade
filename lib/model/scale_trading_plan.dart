@@ -6,8 +6,15 @@ class ScalePlan {
   String totalValue;
   bool isTradeTypeBuying;
 
+
+  ScalePlan(this.buyingPrice, this.amount, this.totalValue, this.isTradeTypeBuying);
+}
+
+class ScalePlanItem{
+  ScalePlan scalePlan;
+
   TextEditingController myController1;
   TextEditingController myController2;
 
-  ScalePlan(this.buyingPrice, this.amount, this.totalValue, this.isTradeTypeBuying, this.myController1, this.myController2);
+  ScalePlanItem(this.scalePlan, this.myController1, this.myController2);
 }

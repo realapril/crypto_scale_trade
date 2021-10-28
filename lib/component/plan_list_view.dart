@@ -9,7 +9,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class PlanListView extends StatefulWidget {
   int index=0;
-  List<ScalePlan> planList;
+  List<ScalePlanItem> planList;
 
   PlanListView({Key? key, required this.index, required this.planList}) : super(key: key);
 
@@ -24,8 +24,9 @@ class _PlanListViewState extends State<PlanListView> {
   @override
   void initState() {
     super.initState();
-    widget.planList[widget.index].myController1.text = widget.planList[widget.index].buyingPrice;
-    widget.planList[widget.index].myController2.text = widget.planList[widget.index].amount;
+
+    widget.planList[widget.index].myController1.text = widget.planList[widget.index].scalePlan.buyingPrice;
+    widget.planList[widget.index].myController2.text = widget.planList[widget.index].scalePlan.amount;
   }
   int counter =0;
   @override
@@ -61,7 +62,7 @@ class _PlanListViewState extends State<PlanListView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            widget.planList[widget.index].isTradeTypeBuying == true ? Padding(
+            widget.planList[widget.index].scalePlan.isTradeTypeBuying == true ? Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('매수', style: _txtStyle.scaleTradePlan_buyTextStyle(),),
             ) : Padding(
@@ -135,7 +136,7 @@ class _PlanListViewState extends State<PlanListView> {
                 Expanded(
                   flex: 2,
                   child:
-                  Text(widget.planList[widget.index].totalValue,
+                  Text(widget.planList[widget.index].scalePlan.totalValue,
                     textAlign: TextAlign.right,
                     overflow: TextOverflow.ellipsis,
                   ),

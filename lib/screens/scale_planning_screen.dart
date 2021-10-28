@@ -80,7 +80,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.blue
           ),
           onPressed: () {
-            planProvider.addPlan(ScalePlan('', '', '', false, TextEditingController(), TextEditingController() ));
+            planProvider.addPlan(ScalePlanItem( ScalePlan('', '', '', false), TextEditingController(), TextEditingController()));
           },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매도"),
@@ -96,7 +96,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.red
           ),
           onPressed: () {
-            planProvider.addPlan(ScalePlan('', '', '', true, TextEditingController(), TextEditingController() ));
+            planProvider.addPlan( ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController()) );
             _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
             },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),

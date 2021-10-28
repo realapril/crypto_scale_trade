@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class PlanListvewProvider extends ChangeNotifier {
   //basic plan should be buying plan
-  List<ScalePlan> _plans = [ ScalePlan('', '', '', true, TextEditingController(), TextEditingController())  ];
+  List<ScalePlanItem> _plans = [ ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController())  ];
 
-  List<ScalePlan> get plans => _plans;
+  List<ScalePlanItem> get plans => _plans;
 
-  addPlan(ScalePlan newPlan) {
+  addPlan(ScalePlanItem newPlan) {
     _plans.add(newPlan);
     notifyListeners();
   }
@@ -19,20 +19,20 @@ class PlanListvewProvider extends ChangeNotifier {
 
   resetPlan(){
     _plans.clear();
-    _plans.add(ScalePlan('', '', '', true, TextEditingController(), TextEditingController()));
+    _plans.add( ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController()) );
     notifyListeners();
   }
 
   updatePlanPrice(int index, String price){
-    _plans[index].buyingPrice = price;
-    _plans[index].totalValue = _calTotalValue(price, _plans[index].amount);
+    _plans[index].scalePlan.buyingPrice = price;
+    _plans[index].scalePlan.totalValue = _calTotalValue(price, _plans[index].scalePlan.amount);
 
     notifyListeners();
   }
 
   updatePlanAmount(int index, String amount){
-    _plans[index].amount = amount;
-    _plans[index].totalValue = _calTotalValue(_plans[index].buyingPrice, amount);
+    _plans[index].scalePlan.amount = amount;
+    _plans[index].scalePlan.totalValue = _calTotalValue(_plans[index].scalePlan.buyingPrice, amount);
 
     notifyListeners();
   }
