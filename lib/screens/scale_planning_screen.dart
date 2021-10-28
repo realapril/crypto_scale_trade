@@ -16,6 +16,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   late PlanListvewProvider planProvider;
   final ScrollController _scrollController = ScrollController();
 
+
   @override
   Widget build(BuildContext context) {
     planProvider = Provider.of<PlanListvewProvider>(context);
@@ -129,11 +130,11 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   //TODO 벗어나면 저장안된다고 경고문뜰거라 ㄱㅊ
   @override
   void dispose() {
-    for (var element in planProvider.plans) {
-
-      element.myController1.dispose();
-      element.myController2.dispose();
-    }
+    planProvider.clearPlan();
+    // for (var element in planProvider.plans) {
+    //   element.myController1.dispose();
+    //   element.myController2.dispose();
+    // }
     super.dispose();
   }
 
