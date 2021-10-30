@@ -18,3 +18,10 @@ class ScalePlanItem{
 
   ScalePlanItem(this.scalePlan, this.myController1, this.myController2);
 }
+
+class WholeScalePlan{
+  String name;
+  DateTime lastEditedTime;
+
+  WholeScalePlan(this.name, this.lastEditedTime);
+}
