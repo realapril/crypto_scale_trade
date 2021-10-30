@@ -3,6 +3,7 @@ import 'package:moor/ffi.dart';
 import 'package:moor/moor.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 's_plan.dart';
 
 part 'database.g.dart';
 
@@ -14,7 +15,7 @@ LazyDatabase _openConnection() {
   });
 }
 
-@UseMoor(tables: [], daos: [])
+@UseMoor(tables: [ScalePlan, WholeScalePlan], daos: [ScalePlanDao])
 class Database extends _$Database {
   Database() : super(_openConnection());
 
