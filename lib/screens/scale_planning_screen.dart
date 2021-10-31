@@ -27,6 +27,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
     super.initState();
     print("init");
   }
+
   @override
   Widget build(BuildContext context) {
     planProvider = Provider.of<PlanListvewProvider>(context);
@@ -42,7 +43,6 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
                 if(formKey.currentState!.validate()){
                   formKey.currentState!.save();
                   if(title!=null){
-                    //final dao = GetIt.instance<ScalePlanDao>();
                     final dao = Provider.of<ScalePlanDao>(context, listen: false);
                     await dao.insertWPlan(
                       WholeScalePlanCompanion(
@@ -68,31 +68,33 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
         behavior: HitTestBehavior.opaque,
           child: Column(
               children: [
-                Container(
-                  color: Colors.grey[300],
-                  child: Form(
-                    key: formKey,
-                    child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: TextFormField(
-                        onSaved: (val) {
-                          title = val;
-                        },
-                        decoration: const InputDecoration(
-                          isDense: true,
-                          hintText: '코인이름',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                _WPlanTitleWidget(),
                 Expanded(child: _buildList(context)),
                 _addPlanBtnWidget(),
               ],
             ),
         )
-        // ),
-      // )
+    );
+  }
+
+  Widget _WPlanTitleWidget(){
+    return Container(
+      color: Colors.grey[300],
+      child: Form(
+        key: formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: TextFormField(
+            onSaved: (val) {
+              title = val;
+            },
+            decoration: const InputDecoration(
+              isDense: true,
+              hintText: '코인이름',
+            ),
+          ),
+        ),
+      ),
     );
   }
 

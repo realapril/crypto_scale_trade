@@ -24,7 +24,7 @@ class PercentScreen extends StatelessWidget{
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _headerWidget(AppLocalizations.of(context)!.calPercent_vtv_title, _txtStyle.percentCal_titleTextStyle()),//1. VTV
+                    _renderHeaderWidget(AppLocalizations.of(context)!.calPercent_vtv_title, _txtStyle.percentCal_titleTextStyle()),//1. VTV
                     Padding(
                       padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                       child: Column(
@@ -113,7 +113,7 @@ class PercentScreen extends StatelessWidget{
                         ],
                       ),
                     ),
-                    _headerWidget(AppLocalizations.of(context)!.calPercent_vi_title,_txtStyle.percentCal_titleTextStyle()),//2. VI
+                    _renderHeaderWidget(AppLocalizations.of(context)!.calPercent_vi_title,_txtStyle.percentCal_titleTextStyle()),//2. VI
                     Padding(
                       padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                       child: Column(
@@ -202,7 +202,7 @@ class PercentScreen extends StatelessWidget{
                         ],
                       ),
                     ),
-                    _headerWidget(AppLocalizations.of(context)!.calPercent_vd_title, _txtStyle.percentCal_titleTextStyle()), //3 VD
+                    _renderHeaderWidget(AppLocalizations.of(context)!.calPercent_vd_title, _txtStyle.percentCal_titleTextStyle()), //3 VD
                     Padding(
                       padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                       child: Column(
@@ -292,7 +292,7 @@ class PercentScreen extends StatelessWidget{
                         ],
                       ),
                     ),
-                    _headerWidget(AppLocalizations.of(context)!.calPercent_ttv_title, _txtStyle.percentCal_titleTextStyle()), //4 TTV
+                    _renderHeaderWidget(AppLocalizations.of(context)!.calPercent_ttv_title, _txtStyle.percentCal_titleTextStyle()), //4 TTV
                     Padding(
                       padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                       child: Column(
@@ -380,7 +380,7 @@ class PercentScreen extends StatelessWidget{
                         ],
                       ),
                     ),
-                    _headerWidget(AppLocalizations.of(context)!.calPercent_vtp_title, _txtStyle.percentCal_titleTextStyle()),//5. VTP
+                    _renderHeaderWidget(AppLocalizations.of(context)!.calPercent_vtp_title, _txtStyle.percentCal_titleTextStyle()),//5. VTP
                     Padding(
                       padding: const EdgeInsets.fromLTRB(18, 20, 18, 24),
                       child: Column(
@@ -474,7 +474,7 @@ class PercentScreen extends StatelessWidget{
     );
   }
 
-  Widget _headerWidget(String text, TextStyle style){
+  Widget _renderHeaderWidget(String text, TextStyle style){
     return Container(
       height: 50.0,
       color: Colors.blueGrey[400],
@@ -485,4 +485,5 @@ class PercentScreen extends StatelessWidget{
       ),
     );
   }
+
 }

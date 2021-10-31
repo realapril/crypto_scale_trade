@@ -6,7 +6,6 @@ import 'package:crypto_scale_trade/screens/scale_planning_screen.dart';
 import 'package:crypto_scale_trade/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget{
   const MainScreen({Key? key}) : super(key: key);
