@@ -1,11 +1,14 @@
 import 'package:crypto_scale_trade/component/add_plan_btn.dart';
 import 'package:crypto_scale_trade/component/person_tile.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
+import 'package:crypto_scale_trade/component/saved_plan_card.dart';
+import 'package:crypto_scale_trade/db/database.dart';
+import 'package:crypto_scale_trade/db/s_plan.dart';
 import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/model/person.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:get_it/get_it.dart';
 
 class SavedListScreen extends StatefulWidget{
   @override
@@ -14,83 +17,44 @@ class SavedListScreen extends StatefulWidget{
 }
 
 class _SavedListScreen extends State<SavedListScreen>{
-  Widget column = Expanded(
-    child: Column(
-      // align the text to the left instead of centered
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.computer),
-            title: Text("Title"),
-            subtitle: Text("SubTitle"),
-          ),
-        )
-      ],
-    ),
-  );
+  @override
+  void initState() {
+    super.initState();
+
+    if(!GetIt.instance.isRegistered<ScalePlanDao>()){
+      final db = Database();
+      GetIt.instance.registerSingleton(ScalePlanDao(db));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Person> people = <Person>[Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false),Person(11, "A", false), Person(12, "B", false)];
+    final dao = GetIt.instance<ScalePlanDao>();
     return Scaffold(
         appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
-        body: Scrollbar(
-          child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 15.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: TextFormField(
-                      // onChanged: Provider.setVtvA,
-                      decoration: const InputDecoration(
-                          isDense: true,
-                          hintText: '계획 1'
-                      ),
-                    ),
-                  ),
-                  ListView.builder(
-                    // scrollDirection: Axis.vertical,
-                    physics: ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.all(8),
-                    itemCount: people.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return PersonTile(people[index]);
-                    },
-                  ),
-                  // ListView.builder(
-                  // // ListView.separated(
-                  // //   itemCount: ,
-                  //   itemBuilder: (context, index) {
-                  //     // var item = items[index];
-                  //     return Card(
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.all(8.0),
-                  //         child: Column(
-                  //           children: <Widget>[
-                  //             column,
-                  //             column,
-                  //             column,
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     );
-                  //
-                  //   },
-                  //   // separatorBuilder: (BuildContext context, int index){
-                  //   //   return Divider();
-                  //   // },
-                  // ),
-                  const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: AddPlanBtnWidget(),
-                  ),
-                ],
-              )
-          ),
+        body: StreamBuilder<List<WholeScalePlanData>>(
+          stream: dao.getAllWPlans(),
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              final data = snapshot.data!;
+              return ListView.separated(
+                  itemBuilder: (_, index) {
+                    final item = data[index];
+
+                    return SavedPlanCard(
+                      title: item.name,
+                      createdAt: item.lastEditedTime,
+                    );
+                  },
+                  separatorBuilder: (_, index) {
+                    return Divider();
+                  },
+                  itemCount: data.length);
+
+            }else{
+              return Container();
+            }
+          },
         )
     );
   }

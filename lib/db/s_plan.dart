@@ -28,5 +28,5 @@ class ScalePlanDao extends DatabaseAccessor<Database> with _$ScalePlanDaoMixin{
   Future insertWPlan(WholeScalePlanCompanion data) => into(wholeScalePlan).insert(data);
 
 
-  Future<List<ScalePlanData>> getAllPlans() => select(scalePlan).get();
+  Stream<List<ScalePlanData>> getAllPlans() => select(scalePlan).watch();
 }

@@ -253,4 +253,10 @@ class PercentProvider extends ChangeNotifier {
   }
 
 
+  saveAll(){
+    // if(!GetIt.instance.isRegistered<ScalePlanDao>()){
+    //   final db = Database();
+    //   GetIt.instance.registerSingleton(ScalePlanDao(db));
+    // }
+  }
 }

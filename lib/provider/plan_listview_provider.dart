@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class PlanListvewProvider extends ChangeNotifier {
   //basic plan should be buying plan
-  List<ScalePlanItem> _plans = [ ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController())  ];
+  List<ScalePlanItem_md> _plans = [ ScalePlanItem_md( ScalePlan_md('', '', '', true), TextEditingController(), TextEditingController())  ];
 
-  List<ScalePlanItem> get plans => _plans;
+  List<ScalePlanItem_md> get plans => _plans;
 
-  addPlan(ScalePlanItem newPlan) {
+  addPlan(ScalePlanItem_md newPlan) {
     _plans.add(newPlan);
     notifyListeners();
   }
@@ -19,7 +19,7 @@ class PlanListvewProvider extends ChangeNotifier {
 
   resetPlan(){
     _plans.clear();
-    _plans.add( ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController()) );
+    _plans.add( ScalePlanItem_md( ScalePlan_md('', '', '', true), TextEditingController(), TextEditingController()) );
     notifyListeners();
   }
 

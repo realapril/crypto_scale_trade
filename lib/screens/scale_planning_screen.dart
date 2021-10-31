@@ -1,10 +1,13 @@
-import 'package:crypto_scale_trade/component/add_plan_btn.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
+import 'package:crypto_scale_trade/db/database.dart';
+import 'package:crypto_scale_trade/db/s_plan.dart';
 import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/provider/plan_listview_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:moor/moor.dart' hide Column;
 import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
 
 class ScalePlanningScreen extends StatefulWidget{
@@ -16,7 +19,17 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   late PlanListvewProvider planProvider;
   final ScrollController _scrollController = ScrollController();
 
+  GlobalKey<FormState> formKey = GlobalKey();
+  String? title;
 
+  @override
+  void initState() {
+    super.initState();
+    if(!GetIt.instance.isRegistered<ScalePlanDao>()){
+      final db = Database();
+      GetIt.instance.registerSingleton(ScalePlanDao(db));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     planProvider = Provider.of<PlanListvewProvider>(context);
@@ -29,12 +42,23 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
             iconSize: 30.0,
             icon: const Icon(Icons.save_alt_rounded),
             tooltip: 'Save data',
-            onPressed: () {
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   const SnackBar(content: Text('This is a snackbar')));
+            onPressed: () async {
+                if(formKey.currentState!.validate()){
+                  formKey.currentState!.save();
+                  if(title!=null){
+                    final dao = GetIt.instance<ScalePlanDao>();
+                    await dao.insertWPlan(
+                      WholeScalePlanCompanion(
+                        name : Value(title!),
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('저장완료')));
+                  }
+                }
               },
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
 
@@ -47,12 +71,18 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               children: [
                 Container(
                   color: Colors.grey[300],
-                  child: Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        isDense: true,
-                        hintText: '코인이름',
+                  child: Form(
+                    key: formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: TextFormField(
+                        onSaved: (val) {
+                          title = val;
+                        },
+                        decoration: const InputDecoration(
+                          isDense: true,
+                          hintText: '코인이름',
+                        ),
                       ),
                     ),
                   ),
@@ -80,7 +110,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.blue
           ),
           onPressed: () {
-            planProvider.addPlan(ScalePlanItem( ScalePlan('', '', '', false), TextEditingController(), TextEditingController()));
+            planProvider.addPlan(ScalePlanItem_md( ScalePlan_md('', '', '', false), TextEditingController(), TextEditingController()));
           },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),
           label: Text("매도"),
@@ -96,7 +126,7 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
               backgroundColor: Colors.red
           ),
           onPressed: () {
-            planProvider.addPlan( ScalePlanItem( ScalePlan('', '', '', true), TextEditingController(), TextEditingController()) );
+            planProvider.addPlan( ScalePlanItem_md( ScalePlan_md('', '', '', true), TextEditingController(), TextEditingController()) );
             _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
             },
           icon: Icon(Icons.add_circle_outline_outlined, size: 18),

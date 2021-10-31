@@ -9,7 +9,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class PlanListView extends StatefulWidget {
   int index=0;
-  List<ScalePlanItem> planList;
+  List<ScalePlanItem_md> planList;
 
   PlanListView({Key? key, required this.index, required this.planList}) : super(key: key);
 
