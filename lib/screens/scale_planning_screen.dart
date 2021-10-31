@@ -1,3 +1,4 @@
+import 'package:crypto_scale_trade/component/bottom_nav.dart';
 import 'package:crypto_scale_trade/component/plan_list_view.dart';
 import 'package:crypto_scale_trade/db/database.dart';
 import 'package:crypto_scale_trade/db/s_plan.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moor/moor.dart' hide Column;
 import 'package:provider/provider.dart';
-import 'package:get_it/get_it.dart';
 
 
 class ScalePlanningScreen extends StatefulWidget{
@@ -25,15 +25,11 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
   @override
   void initState() {
     super.initState();
-    if(!GetIt.instance.isRegistered<ScalePlanDao>()){
-      final db = Database();
-      GetIt.instance.registerSingleton(ScalePlanDao(db));
-    }
+    print("init");
   }
   @override
   Widget build(BuildContext context) {
     planProvider = Provider.of<PlanListvewProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.scale),
@@ -46,15 +42,18 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
                 if(formKey.currentState!.validate()){
                   formKey.currentState!.save();
                   if(title!=null){
-                    final dao = GetIt.instance<ScalePlanDao>();
+                    //final dao = GetIt.instance<ScalePlanDao>();
+                    final dao = Provider.of<ScalePlanDao>(context, listen: false);
                     await dao.insertWPlan(
                       WholeScalePlanCompanion(
                         name : Value(title!),
                       ),
                     );
+                    planProvider.resetPlan();
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('저장완료')));
                   }
+                  //TODO 페이지 이동
                 }
               },
             ),
@@ -157,14 +156,14 @@ class _ScalePlanning extends State<ScalePlanningScreen>{
     );
   }
 
-  //TODO 벗어나면 저장안된다고 경고문뜰거라 ㄱㅊ
   @override
   void dispose() {
-    planProvider.clearPlan();
+    //planProvider.dispose();
     // for (var element in planProvider.plans) {
     //   element.myController1.dispose();
     //   element.myController2.dispose();
     // }
+    print("dispose");
     super.dispose();
   }
 

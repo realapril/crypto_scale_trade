@@ -8,7 +8,7 @@ import 'package:crypto_scale_trade/model/scale_trading_plan.dart';
 import 'package:crypto_scale_trade/model/person.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 class SavedListScreen extends StatefulWidget{
   @override
@@ -18,22 +18,13 @@ class SavedListScreen extends StatefulWidget{
 
 class _SavedListScreen extends State<SavedListScreen>{
   @override
-  void initState() {
-    super.initState();
-
-    if(!GetIt.instance.isRegistered<ScalePlanDao>()){
-      final db = Database();
-      GetIt.instance.registerSingleton(ScalePlanDao(db));
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final dao = GetIt.instance<ScalePlanDao>();
+    final dao = Provider.of<ScalePlanDao>(context, listen: false);
+
     return Scaffold(
         appBar: AppBar(title: Text(AppLocalizations.of(context)!.scale)),
         body: StreamBuilder<List<WholeScalePlanData>>(
-          stream: dao.getAllWPlans(),
+          stream: dao.watchAllWPlans(),
           builder: (context, snapshot){
             if(snapshot.hasData){
               final data = snapshot.data!;

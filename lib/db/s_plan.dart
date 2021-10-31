@@ -22,11 +22,14 @@ class WholeScalePlan extends Table {
 class ScalePlanDao extends DatabaseAccessor<Database> with _$ScalePlanDaoMixin{
   ScalePlanDao(Database db): super(db);
 
-  Stream<List<WholeScalePlanData>> getAllWPlans() => select(wholeScalePlan).watch();
-  Stream<WholeScalePlanData> searchWPlan(int _id) =>
+  Stream<List<WholeScalePlanData>> watchAllWPlans() => select(wholeScalePlan).watch();
+  Stream<WholeScalePlanData> watchWPlan(int _id) =>
       (select(wholeScalePlan)..where((tbl)=> tbl.id.equals(_id))).watchSingle();
+
   Future insertWPlan(WholeScalePlanCompanion data) => into(wholeScalePlan).insert(data);
+  Future updateWPlan(WholeScalePlanCompanion data) => update(wholeScalePlan).replace(data);
+  Future deleteWPlan(WholeScalePlanCompanion data) => delete(wholeScalePlan).delete(data);
 
 
-  Stream<List<ScalePlanData>> getAllPlans() => select(scalePlan).watch();
+  Stream<List<ScalePlanData>> watchAllPlans() => select(scalePlan).watch();
 }

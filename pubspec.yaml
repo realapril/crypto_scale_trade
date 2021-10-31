@@ -28,7 +28,6 @@ dependencies:
   flutter_keyboard_visibility: ^5.1.0
   sqlite3_flutter_libs:
   moor: ^4.6.1
-  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:

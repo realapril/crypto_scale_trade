@@ -8,6 +8,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BottomNavigationWidget extends StatelessWidget {
   const BottomNavigationWidget({Key? key}) : super(key: key);
 
+  updateCurrentPage(BuildContext context, int index){
+    BottomNavigationProvider bottomNavigationBar = Provider.of<BottomNavigationProvider>(context);
+    bottomNavigationBar.updateCurrentPage(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     BottomNavigationProvider bottomNavigationBar = Provider.of<BottomNavigationProvider>(context);
